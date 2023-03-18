@@ -335,6 +335,7 @@ namespace VSSaveManager
             newGamePlusCharacterComboBox.Items.Add("No Unlocked Character");
             foreach (string s in CurrentSaveFile.SaveObject["BoughtCharacters"].Values<string>())
                 newGamePlusCharacterComboBox.Items.Add(GetCharacterName(s));
+            newGamePlusCharacterComboBox.SelectedIndex = 0;
             startNewGamePlusbtn.Enabled = NgPlusAble;
         }
 
@@ -342,7 +343,7 @@ namespace VSSaveManager
         {
             JObject Save = CurrentSaveFile.SaveObject;
             List<string> HandyArray = new List<string>();
-            string NgPlusCharacter = newGamePlusCharacterComboBox.SelectedIndex == 0 ? "" : Save["BoughtCharacters"].Values<string>().ToArray()[newGamePlusCharacterComboBox.SelectedIndex - 1];
+            string NgPlusCharacter = newGamePlusCharacterComboBox.SelectedIndex <= 0 ? "" : Save["BoughtCharacters"].Values<string>().ToArray()[newGamePlusCharacterComboBox.SelectedIndex - 1];
             Save["SelectedCharacter"] = NgPlusCharacter != "" ? NgPlusCharacter : "ANTONIO";
             Save["SelectedStage"] = "FOREST";
             Save["SelectedHyper"] = false;
@@ -459,10 +460,14 @@ namespace VSSaveManager
             {
 
             });
-            Save["UnlockedArcanas"] = JArray.FromObject(new int[]
             {
-                //0
-            });
+                List<int> HandyIntArray = new List<int>();
+                if (unlockGameKillerCheck.Checked)
+                {
+                    HandyIntArray.Add(0);
+                }
+                Save["UnlockedArcanas"] = JArray.FromObject(HandyIntArray.ToArray());
+            }
             Save["KillCount"] = JObject.Parse("{}");
             Save["PickupCount"] = JObject.Parse("{}");
             Save["DestroyedCount"] = JObject.Parse("{}");

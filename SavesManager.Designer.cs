@@ -52,6 +52,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.startNewGamePlusbtn = new System.Windows.Forms.Button();
+            this.newGamePlusCharacterComboBox = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.ngpluselligibilitybox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -59,9 +62,7 @@
             this.newprofilebtn = new System.Windows.Forms.Button();
             this.saveprofilebtn = new System.Windows.Forms.Button();
             this.saveFileSelector = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.newGamePlusCharacterComboBox = new System.Windows.Forms.ComboBox();
-            this.startNewGamePlusbtn = new System.Windows.Forms.Button();
+            this.unlockGameKillerCheck = new System.Windows.Forms.CheckBox();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -292,6 +293,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.unlockGameKillerCheck);
             this.tabPage3.Controls.Add(this.startNewGamePlusbtn);
             this.tabPage3.Controls.Add(this.newGamePlusCharacterComboBox);
             this.tabPage3.Controls.Add(this.label12);
@@ -303,6 +305,33 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "New Game Plus";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // startNewGamePlusbtn
+            // 
+            this.startNewGamePlusbtn.Location = new System.Drawing.Point(6, 111);
+            this.startNewGamePlusbtn.Name = "startNewGamePlusbtn";
+            this.startNewGamePlusbtn.Size = new System.Drawing.Size(220, 43);
+            this.startNewGamePlusbtn.TabIndex = 4;
+            this.startNewGamePlusbtn.Text = "Start";
+            this.startNewGamePlusbtn.UseVisualStyleBackColor = true;
+            this.startNewGamePlusbtn.Click += new System.EventHandler(this.startNewGamePlusbtn_Click);
+            // 
+            // newGamePlusCharacterComboBox
+            // 
+            this.newGamePlusCharacterComboBox.FormattingEnabled = true;
+            this.newGamePlusCharacterComboBox.Location = new System.Drawing.Point(6, 55);
+            this.newGamePlusCharacterComboBox.Name = "newGamePlusCharacterComboBox";
+            this.newGamePlusCharacterComboBox.Size = new System.Drawing.Size(220, 21);
+            this.newGamePlusCharacterComboBox.TabIndex = 3;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 39);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(225, 13);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Pick a Character to start New Game Plus with.";
             // 
             // ngpluselligibilitybox
             // 
@@ -373,32 +402,15 @@
             this.saveFileSelector.TabIndex = 0;
             this.saveFileSelector.SelectedIndexChanged += new System.EventHandler(this.saveFileSelector_SelectedIndexChanged);
             // 
-            // label12
+            // unlockGameKillerCheck
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 39);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(225, 13);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Pick a Character to start New Game Plus with.";
-            // 
-            // newGamePlusCharacterComboBox
-            // 
-            this.newGamePlusCharacterComboBox.FormattingEnabled = true;
-            this.newGamePlusCharacterComboBox.Location = new System.Drawing.Point(6, 55);
-            this.newGamePlusCharacterComboBox.Name = "newGamePlusCharacterComboBox";
-            this.newGamePlusCharacterComboBox.Size = new System.Drawing.Size(220, 21);
-            this.newGamePlusCharacterComboBox.TabIndex = 3;
-            // 
-            // startNewGamePlusbtn
-            // 
-            this.startNewGamePlusbtn.Location = new System.Drawing.Point(6, 111);
-            this.startNewGamePlusbtn.Name = "startNewGamePlusbtn";
-            this.startNewGamePlusbtn.Size = new System.Drawing.Size(220, 43);
-            this.startNewGamePlusbtn.TabIndex = 4;
-            this.startNewGamePlusbtn.Text = "Start";
-            this.startNewGamePlusbtn.UseVisualStyleBackColor = true;
-            this.startNewGamePlusbtn.Click += new System.EventHandler(this.startNewGamePlusbtn_Click);
+            this.unlockGameKillerCheck.AutoSize = true;
+            this.unlockGameKillerCheck.Location = new System.Drawing.Point(6, 82);
+            this.unlockGameKillerCheck.Name = "unlockGameKillerCheck";
+            this.unlockGameKillerCheck.Size = new System.Drawing.Size(134, 17);
+            this.unlockGameKillerCheck.TabIndex = 5;
+            this.unlockGameKillerCheck.Text = "Game Killer Unlocked?";
+            this.unlockGameKillerCheck.UseVisualStyleBackColor = true;
             // 
             // SavesManager
             // 
@@ -457,6 +469,7 @@
         private System.Windows.Forms.ComboBox newGamePlusCharacterComboBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button startNewGamePlusbtn;
+        private System.Windows.Forms.CheckBox unlockGameKillerCheck;
     }
 }
 
