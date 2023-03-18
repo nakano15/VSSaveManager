@@ -154,6 +154,13 @@ namespace VSSaveManager
                     writer.Write(save.SaveObject.ToString());
                 }
             }
+            for (int i = 0; i < ProfileSaveFiles.Count; i++)
+            {
+                if (ProfileSaveFiles[i].Profile == save.Profile)
+                {
+                    ProfileSaveFiles[i] = save;
+                }
+            }
         }
 
         internal static void TrySavingToDesktop(SaveFile save)

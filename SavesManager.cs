@@ -329,7 +329,7 @@ namespace VSSaveManager
 
         private void CheckForNewGamePlus()
         {
-            NgPlusAble = CurrentSaveFile.Achievements.Contains("GreatestJubilee");
+            NgPlusAble = CurrentSaveFile.SaveObject.Value<bool>("HasSeenFinalFireworks"); //("GreatestJubilee");
             ngpluselligibilitybox.Text = NgPlusAble ? "YES" : "NO";
             newGamePlusCharacterComboBox.Items.Clear();
             newGamePlusCharacterComboBox.Items.Add("No Unlocked Character");
