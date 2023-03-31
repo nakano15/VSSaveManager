@@ -13,12 +13,12 @@ namespace VSSaveManager
         internal static string GameSaveDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) + @"\Steam\userdata\";
         internal static string ProfileSaveDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\My Games\Vampire Survivors Save Manager\";
         internal static string DesktopDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
+        internal static string AppDataDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Vampire_Survivors_Data\";
         internal static string UserSaveFolder = "";
         internal static string[] FoldersFound = new string[0];
         private static bool _SavesDirectoryExist = false;
         internal static bool SavesDirectoryExist { get { return _SavesDirectoryExist; } }
         internal static SaveFile MainSaveFile;
-        internal static List<SaveFile> ProfileSaveFiles = new List<SaveFile>();
         private static bool _MainSaveFileExists = false;
         internal static bool MainSaveFileExists { get { return _MainSaveFileExists; } }
         internal static string GetFullGameSaveDirectory
@@ -37,7 +37,7 @@ namespace VSSaveManager
         }
         const string SaveFileName = "SaveData";
         internal static string LastProfile = "";
-        static string SettingsFileName = ProfileSaveDirectory + @"\settings.json";
+        static string SettingsFileName = Environment.CurrentDirectory + @"\settings.json";
 
         internal static void SaveSettingFile()
         {
@@ -86,28 +86,7 @@ namespace VSSaveManager
             if(_MainSaveFileExists = File.Exists(SaveFilePath))
             {
                 MainSaveFile = new SaveFile(LoadJsonFile(SaveFilePath));
-                MainSaveFile.Profile = LastProfile;
             }
-            else
-            {
-                return;
-            }
-            ProfileSaveFiles.Clear();
-            if (!Directory.Exists(GetFullProfileDirectory))
-                Directory.CreateDirectory(GetFullProfileDirectory);
-            bool CurrentProfileExists = false;
-            foreach(string d in Directory.GetDirectories(GetFullProfileDirectory, "*", SearchOption.TopDirectoryOnly))
-            {
-                SaveFilePath = d + @"\" + SaveFileName;
-                if(File.Exists(SaveFilePath))
-                {
-                    SaveFile s = new SaveFile(LoadJsonFile(SaveFilePath));
-                    s.Profile = d.Substring(GetFullProfileDirectory.Length);
-                    if (s.Profile == LastProfile) CurrentProfileExists = true;
-                    ProfileSaveFiles.Add(s);
-                }
-            }
-            if (!CurrentProfileExists) LastProfile = "";
         }
 
         internal static bool ProfilePathExists(string Profile)
@@ -127,9 +106,9 @@ namespace VSSaveManager
             Directory.Delete(ProfileDirectory, true);
         }
 
-        internal static void SaveSaveFileInformation(SaveFile save, bool IsMainSaveFile)
+        internal static void SaveSaveFileInformation(SaveFile save)
         {
-            if (!Directory.Exists(GetFullProfileDirectory + save.Profile))
+            /*if (!Directory.Exists(GetFullProfileDirectory + save.Profile))
                 Directory.CreateDirectory(GetFullProfileDirectory + save.Profile);
             string SaveDataPath;
             if (IsMainSaveFile)
@@ -144,21 +123,14 @@ namespace VSSaveManager
                         writer.Write(save.SaveObject.ToString());
                     }
                 }
-            }
-            SaveDataPath = GetFullProfileDirectory + save.Profile + @"\" + SaveFileName;
+            }*/
+            string SaveDataPath = DesktopDirectory + SaveFileName;//GetFullProfileDirectory + save.Profile + @"\" + SaveFileName;
             if (File.Exists(SaveDataPath)) File.Delete(SaveDataPath);
             using (FileStream stream = new FileStream(SaveDataPath, FileMode.CreateNew))
             {
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
                     writer.Write(save.SaveObject.ToString());
-                }
-            }
-            for (int i = 0; i < ProfileSaveFiles.Count; i++)
-            {
-                if (ProfileSaveFiles[i].Profile == save.Profile)
-                {
-                    ProfileSaveFiles[i] = save;
                 }
             }
         }
@@ -180,7 +152,7 @@ namespace VSSaveManager
         internal static void OpenSavesFolder()
         {
             System.Diagnostics.Process.Start(GetFullGameSaveDirectory);
-            System.Windows.Forms.MessageBox.Show("Use a online Vampire Survivors save editor on the \"SaveData\" in your desktop to update checksum, then download the edited save file.\nDepending on the site you use, it might be downloaded as \"SaveData.sav\", rename it to \"SaveData\".\nMove the SaveData in your desktop to the folder where your save file is at.\nRemember to disable Steam Cloud temporarily.");
+            //System.Windows.Forms.MessageBox.Show("Use a online Vampire Survivors save editor on the \"SaveData\" in your desktop to update checksum, then download the edited save file.\nDepending on the site you use, it might be downloaded as \"SaveData.sav\", rename it to \"SaveData\".\nMove the SaveData in your desktop to the folder where your save file is at.\nRemember to disable Steam Cloud temporarily.");
         }
 
         private static string LoadJsonFile(string Path)

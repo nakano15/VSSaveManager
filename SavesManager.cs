@@ -26,6 +26,7 @@ namespace VSSaveManager
         {
             PopulateNameList();
             InitializeComponent();
+            UpdateSelectedProfile();
         }
 
         private void PopulateNameList()
@@ -196,93 +197,25 @@ namespace VSSaveManager
 
         private void UpdateSelectedProfile()
         {
-            deleteprofilebtn.Enabled = saveFileSelector.SelectedIndex != 0;
-            newprofilebtn.Enabled = Main.ProfileSaveFiles.Count > 0;
-            if (saveFileSelector.SelectedIndex == 0)
-            {
-                CurrentSaveFile = Main.MainSaveFile;
-                saveprofilebtn.Text = "Save";
-            }
-            else
-            {
-                CurrentSaveFile = Main.ProfileSaveFiles[saveFileSelector.SelectedIndex - 1];
-                saveprofilebtn.Text = "Get Save Data";
-            }
+            CurrentSaveFile = Main.MainSaveFile;
             UpdateInformation(CurrentSaveFile);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            UpdateProfilesList();
-        }
 
-        private void UpdateProfilesList()
-        {
-            saveFileSelector.Items.Clear();
-            saveFileSelector.Items.Add("* Main Save File");
-            foreach (SaveFile save in Main.ProfileSaveFiles)
-            {
-                saveFileSelector.Items.Add(save.Profile);
-            }
-            saveFileSelector.SelectedIndex = 0;
         }
 
         private void saveprofilebtn_Click(object sender, EventArgs e)
         {
-            if (saveFileSelector.SelectedIndex == 0)
-            {
-                TrySavingProfile();
-            }
-            else
-            {
-                if(lastSelectedIndex == 0 && saveFileSelector.SelectedIndex > 0)
-                {
-                    switch (MessageBox.Show("Would you like to save the changes on the current loaded save file?", "Warning.", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
-                    {
-                        case DialogResult.Yes:
-                            if (!TrySavingProfile()) return;
-                            break;
-                        case DialogResult.No:
-                            break;
-                        case DialogResult.Cancel:
-                            return;
-                    }
-                    Main.TrySavingToDesktop(CurrentSaveFile);
-                    Main.LastProfile = CurrentSaveFile.Profile;
-                    Main.SaveSettingFile();
-                    Main.OpenSavesFolder();
-                }
-            }
-            lastSelectedIndex = saveFileSelector.SelectedIndex;
+            TrySavingProfile();
         }
 
         private bool TrySavingProfile()
         {
-            if (CurrentSaveFile.Profile == "")
-            {
-                //Create
-                ShowNameInput();
-                if (nameinput.DialogResult != DialogResult.OK)
-                {
-                    return false;
-                }
-                string NewProfileName = nameinput.GetPickedName;
-                CurrentSaveFile.Profile = NewProfileName;
-                Main.CreateProfile(NewProfileName);
-                SaveFile NewSave = new SaveFile(CurrentSaveFile.SaveObject);
-                NewSave.Profile = NewProfileName;
-                Main.SaveSaveFileInformation(NewSave, saveFileSelector.SelectedIndex == 0);
-                Main.LoadSavesAndProfiles();
-                UpdateProfilesList();
-                UpdateSelectedProfile();
-                Main.LastProfile = NewProfileName;
-                Main.SaveSettingFile();
-            }
-            else
-            {
-                Main.SaveSaveFileInformation(CurrentSaveFile, saveFileSelector.SelectedIndex == 0);
-                Main.OpenSavesFolder();
-            }
+            Main.SaveSaveFileInformation(CurrentSaveFile);
+            Main.OpenSavesFolder();
+            MessageBox.Show("Altered save file placed on the Desktop.\nUse a Vampire Survivors Save Editor to update the hashcode of the save file before placing on the save folder.");
             return true;
         }
 
@@ -294,37 +227,13 @@ namespace VSSaveManager
 
         private void newprofilebtn_Click(object sender, EventArgs e)
         {
-            ShowNameInput();
-            if(nameinput.DialogResult != DialogResult.OK)
-            {
-                return;
-            }
-            string NewProfileName = nameinput.GetPickedName;
-            Main.CreateProfile(NewProfileName);
             JObject NewSave = JObject.Parse(ClearSaveFile.ClearSave);
             NewSave["saveDate"] = DateTime.Now;
             SaveFile NewSaveFile = new SaveFile(NewSave);
-            NewSaveFile.Profile = NewProfileName;
             NewSaveFile.UpdateChecksum();
-            Main.SaveSaveFileInformation(NewSaveFile, false);
+            Main.SaveSaveFileInformation(NewSaveFile);
             Main.LoadSavesAndProfiles();
-            UpdateProfilesList();
-            MessageBox.Show("New profile created.");
-        }
-
-        private void deleteprofilebtn_Click(object sender, EventArgs e)
-        {
-            if (saveFileSelector.SelectedIndex > 0)
-            {
-                if (MessageBox.Show("Are you sure you want to delete " + CurrentSaveFile.Profile + " profile?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    Main.DeleteProfile(CurrentSaveFile.Profile);
-                    if (Main.LastProfile == CurrentSaveFile.Profile)
-                        Main.LastProfile = "";
-                    Main.LoadSavesAndProfiles();
-                    UpdateProfilesList();
-                }
-            }
+            MessageBox.Show("New save file created and placed on the Desktop.\nUse a Vampire Survivor Save Editor to change the hash code before placing the save file in the folder.");
         }
 
         private void CheckForNewGamePlus()
@@ -369,7 +278,7 @@ namespace VSSaveManager
             Save["RunPickups_Coins"] = 0;
             Save["OwO"] = 0;
             Save["CompletedHurries"] = 0;
-            Save["HasKilledFinalBoss"] = false;
+            Save["HasKilledTheFinalBoss"] = false;
             Save["HasSeenFinalFireworks"] = false;
             Save["ShowPickups"] = false;
             Save["ShowSmallMapIcons"] = false;
@@ -484,6 +393,21 @@ namespace VSSaveManager
         private void startNewGamePlusbtn_Click(object sender, EventArgs e)
         {
             StartNewGamePlus();
+        }
+
+        private void openSaveFolderbtn_Click(object sender, EventArgs e)
+        {
+            Main.OpenSavesFolder();
+        }
+
+        private void helpbtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Clicking any button inside this box will create a save file on your desktop, so don't worry.");
+            MessageBox.Show("Save Changes will create a save file with the changes done here.");
+            MessageBox.Show("Create Clean Save will create a totally new game save that you can use on desktop.");
+            MessageBox.Show("Open Save Folder will open the folder where the game save file is located. Very important for altering save files.");
+            MessageBox.Show("Every time you want to change your current save file, use a Vampire Survivors Save Editor to change the hashcode of it.");
+            MessageBox.Show("Be sure to disable Steam Cloud Save before opening the game.");
         }
     }
 }

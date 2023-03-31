@@ -13,7 +13,6 @@ namespace VSSaveManager
     public class SaveFile
     {
         public JObject SaveObject = null;
-        public string Profile = "";
 
         public string SelectedCharacter
         {

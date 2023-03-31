@@ -52,17 +52,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.unlockGameKillerCheck = new System.Windows.Forms.CheckBox();
             this.startNewGamePlusbtn = new System.Windows.Forms.Button();
             this.newGamePlusCharacterComboBox = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.ngpluselligibilitybox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.deleteprofilebtn = new System.Windows.Forms.Button();
             this.newprofilebtn = new System.Windows.Forms.Button();
             this.saveprofilebtn = new System.Windows.Forms.Button();
-            this.saveFileSelector = new System.Windows.Forms.ComboBox();
-            this.unlockGameKillerCheck = new System.Windows.Forms.CheckBox();
+            this.openSaveFolderbtn = new System.Windows.Forms.Button();
+            this.helpbtn = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -81,7 +81,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(504, 360);
+            this.tabPage2.Size = new System.Drawing.Size(504, 363);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Save Information";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -156,7 +156,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(504, 360);
+            this.tabPage1.Size = new System.Drawing.Size(504, 363);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Save Progress";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -200,7 +200,7 @@
             this.secretsList.FormattingEnabled = true;
             this.secretsList.Location = new System.Drawing.Point(185, 247);
             this.secretsList.Name = "secretsList";
-            this.secretsList.Size = new System.Drawing.Size(156, 95);
+            this.secretsList.Size = new System.Drawing.Size(156, 56);
             this.secretsList.TabIndex = 11;
             // 
             // label6
@@ -285,10 +285,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(12, 62);
+            this.tabControl1.Location = new System.Drawing.Point(12, 59);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(512, 386);
+            this.tabControl1.Size = new System.Drawing.Size(512, 389);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage3
@@ -301,10 +301,20 @@
             this.tabPage3.Controls.Add(this.label11);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(504, 360);
+            this.tabPage3.Size = new System.Drawing.Size(504, 363);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "New Game Plus";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // unlockGameKillerCheck
+            // 
+            this.unlockGameKillerCheck.AutoSize = true;
+            this.unlockGameKillerCheck.Location = new System.Drawing.Point(6, 82);
+            this.unlockGameKillerCheck.Name = "unlockGameKillerCheck";
+            this.unlockGameKillerCheck.Size = new System.Drawing.Size(134, 17);
+            this.unlockGameKillerCheck.TabIndex = 5;
+            this.unlockGameKillerCheck.Text = "Game Killer Unlocked?";
+            this.unlockGameKillerCheck.UseVisualStyleBackColor = true;
             // 
             // startNewGamePlusbtn
             // 
@@ -352,65 +362,56 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.deleteprofilebtn);
+            this.groupBox1.Controls.Add(this.helpbtn);
+            this.groupBox1.Controls.Add(this.openSaveFolderbtn);
             this.groupBox1.Controls.Add(this.newprofilebtn);
             this.groupBox1.Controls.Add(this.saveprofilebtn);
-            this.groupBox1.Controls.Add(this.saveFileSelector);
             this.groupBox1.Location = new System.Drawing.Point(12, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(501, 43);
+            this.groupBox1.Size = new System.Drawing.Size(501, 40);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Save Files";
             // 
-            // deleteprofilebtn
-            // 
-            this.deleteprofilebtn.Location = new System.Drawing.Point(420, 12);
-            this.deleteprofilebtn.Name = "deleteprofilebtn";
-            this.deleteprofilebtn.Size = new System.Drawing.Size(75, 23);
-            this.deleteprofilebtn.TabIndex = 3;
-            this.deleteprofilebtn.Text = "Delete Profile";
-            this.deleteprofilebtn.UseVisualStyleBackColor = true;
-            this.deleteprofilebtn.Click += new System.EventHandler(this.deleteprofilebtn_Click);
-            // 
             // newprofilebtn
             // 
-            this.newprofilebtn.Location = new System.Drawing.Point(339, 12);
+            this.newprofilebtn.Location = new System.Drawing.Point(136, 12);
             this.newprofilebtn.Name = "newprofilebtn";
-            this.newprofilebtn.Size = new System.Drawing.Size(75, 23);
+            this.newprofilebtn.Size = new System.Drawing.Size(131, 23);
             this.newprofilebtn.TabIndex = 2;
-            this.newprofilebtn.Text = "New Profile";
+            this.newprofilebtn.Text = "Create Clean Save";
             this.newprofilebtn.UseVisualStyleBackColor = true;
             this.newprofilebtn.Click += new System.EventHandler(this.newprofilebtn_Click);
             // 
             // saveprofilebtn
             // 
-            this.saveprofilebtn.Location = new System.Drawing.Point(236, 12);
+            this.saveprofilebtn.Location = new System.Drawing.Point(6, 12);
             this.saveprofilebtn.Name = "saveprofilebtn";
-            this.saveprofilebtn.Size = new System.Drawing.Size(97, 23);
+            this.saveprofilebtn.Size = new System.Drawing.Size(124, 23);
             this.saveprofilebtn.TabIndex = 1;
-            this.saveprofilebtn.Text = "Save";
+            this.saveprofilebtn.Text = "Save Changes";
             this.saveprofilebtn.UseVisualStyleBackColor = true;
             this.saveprofilebtn.Click += new System.EventHandler(this.saveprofilebtn_Click);
             // 
-            // saveFileSelector
+            // openSaveFolderbtn
             // 
-            this.saveFileSelector.FormattingEnabled = true;
-            this.saveFileSelector.Location = new System.Drawing.Point(6, 12);
-            this.saveFileSelector.Name = "saveFileSelector";
-            this.saveFileSelector.Size = new System.Drawing.Size(224, 21);
-            this.saveFileSelector.TabIndex = 0;
-            this.saveFileSelector.SelectedIndexChanged += new System.EventHandler(this.saveFileSelector_SelectedIndexChanged);
+            this.openSaveFolderbtn.Location = new System.Drawing.Point(273, 12);
+            this.openSaveFolderbtn.Name = "openSaveFolderbtn";
+            this.openSaveFolderbtn.Size = new System.Drawing.Size(127, 23);
+            this.openSaveFolderbtn.TabIndex = 4;
+            this.openSaveFolderbtn.Text = "Open Save Folder";
+            this.openSaveFolderbtn.UseVisualStyleBackColor = true;
+            this.openSaveFolderbtn.Click += new System.EventHandler(this.openSaveFolderbtn_Click);
             // 
-            // unlockGameKillerCheck
+            // helpbtn
             // 
-            this.unlockGameKillerCheck.AutoSize = true;
-            this.unlockGameKillerCheck.Location = new System.Drawing.Point(6, 82);
-            this.unlockGameKillerCheck.Name = "unlockGameKillerCheck";
-            this.unlockGameKillerCheck.Size = new System.Drawing.Size(134, 17);
-            this.unlockGameKillerCheck.TabIndex = 5;
-            this.unlockGameKillerCheck.Text = "Game Killer Unlocked?";
-            this.unlockGameKillerCheck.UseVisualStyleBackColor = true;
+            this.helpbtn.Location = new System.Drawing.Point(406, 12);
+            this.helpbtn.Name = "helpbtn";
+            this.helpbtn.Size = new System.Drawing.Size(89, 23);
+            this.helpbtn.TabIndex = 5;
+            this.helpbtn.Text = "Help";
+            this.helpbtn.UseVisualStyleBackColor = true;
+            this.helpbtn.Click += new System.EventHandler(this.helpbtn_Click);
             // 
             // SavesManager
             // 
@@ -453,8 +454,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox saveFileSelector;
-        private System.Windows.Forms.Button deleteprofilebtn;
         private System.Windows.Forms.Button newprofilebtn;
         private System.Windows.Forms.Button saveprofilebtn;
         private System.Windows.Forms.TextBox lastMapNameBox;
@@ -470,6 +469,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button startNewGamePlusbtn;
         private System.Windows.Forms.CheckBox unlockGameKillerCheck;
+        private System.Windows.Forms.Button openSaveFolderbtn;
+        private System.Windows.Forms.Button helpbtn;
     }
 }
 
