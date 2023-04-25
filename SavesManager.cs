@@ -394,7 +394,7 @@ namespace VSSaveManager
                     HandyArray.Add("RELIC_NOSEGLASSES");
                 if (ItemsArray.Contains("RELIC_SECRETS"))
                     HandyArray.Add("RELIC_SECRETS");
-                if (ItemsArray.Contains("RELIC_RANDOMAZZO"))
+                if (arcanaUnlockCheck.Checked && ItemsArray.Contains("RELIC_RANDOMAZZO"))
                     HandyArray.Add("RELIC_RANDOMAZZO");
                 Save["CollectedItems"] = JArray.FromObject(HandyArray.ToArray());
                 HandyArray.Clear();

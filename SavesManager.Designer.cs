@@ -52,6 +52,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buyStartersCheck = new System.Windows.Forms.CheckBox();
             this.unlockGameKillerCheck = new System.Windows.Forms.CheckBox();
             this.startNewGamePlusbtn = new System.Windows.Forms.Button();
             this.newGamePlusCharacterComboBox = new System.Windows.Forms.ComboBox();
@@ -63,7 +64,7 @@
             this.openSaveFolderbtn = new System.Windows.Forms.Button();
             this.newprofilebtn = new System.Windows.Forms.Button();
             this.saveprofilebtn = new System.Windows.Forms.Button();
-            this.buyStartersCheck = new System.Windows.Forms.CheckBox();
+            this.arcanaUnlockCheck = new System.Windows.Forms.CheckBox();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -294,6 +295,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.arcanaUnlockCheck);
             this.tabPage3.Controls.Add(this.buyStartersCheck);
             this.tabPage3.Controls.Add(this.unlockGameKillerCheck);
             this.tabPage3.Controls.Add(this.startNewGamePlusbtn);
@@ -307,6 +309,16 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "New Game Plus";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // buyStartersCheck
+            // 
+            this.buyStartersCheck.AutoSize = true;
+            this.buyStartersCheck.Location = new System.Drawing.Point(146, 82);
+            this.buyStartersCheck.Name = "buyStartersCheck";
+            this.buyStartersCheck.Size = new System.Drawing.Size(127, 17);
+            this.buyStartersCheck.TabIndex = 6;
+            this.buyStartersCheck.Text = "Need to buy starters?";
+            this.buyStartersCheck.UseVisualStyleBackColor = true;
             // 
             // unlockGameKillerCheck
             // 
@@ -415,15 +427,17 @@
             this.saveprofilebtn.UseVisualStyleBackColor = true;
             this.saveprofilebtn.Click += new System.EventHandler(this.saveprofilebtn_Click);
             // 
-            // buyStartersCheck
+            // arcanaUnlockCheck
             // 
-            this.buyStartersCheck.AutoSize = true;
-            this.buyStartersCheck.Location = new System.Drawing.Point(146, 82);
-            this.buyStartersCheck.Name = "buyStartersCheck";
-            this.buyStartersCheck.Size = new System.Drawing.Size(127, 17);
-            this.buyStartersCheck.TabIndex = 6;
-            this.buyStartersCheck.Text = "Need to buy starters?";
-            this.buyStartersCheck.UseVisualStyleBackColor = true;
+            this.arcanaUnlockCheck.AutoSize = true;
+            this.arcanaUnlockCheck.Checked = true;
+            this.arcanaUnlockCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.arcanaUnlockCheck.Location = new System.Drawing.Point(279, 82);
+            this.arcanaUnlockCheck.Name = "arcanaUnlockCheck";
+            this.arcanaUnlockCheck.Size = new System.Drawing.Size(120, 17);
+            this.arcanaUnlockCheck.TabIndex = 7;
+            this.arcanaUnlockCheck.Text = "Unlocked Arcanas?";
+            this.arcanaUnlockCheck.UseVisualStyleBackColor = true;
             // 
             // SavesManager
             // 
@@ -484,6 +498,7 @@
         private System.Windows.Forms.Button openSaveFolderbtn;
         private System.Windows.Forms.Button helpbtn;
         private System.Windows.Forms.CheckBox buyStartersCheck;
+        private System.Windows.Forms.CheckBox arcanaUnlockCheck;
     }
 }
 
