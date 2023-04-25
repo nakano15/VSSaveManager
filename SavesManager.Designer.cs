@@ -59,10 +59,11 @@
             this.ngpluselligibilitybox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.helpbtn = new System.Windows.Forms.Button();
+            this.openSaveFolderbtn = new System.Windows.Forms.Button();
             this.newprofilebtn = new System.Windows.Forms.Button();
             this.saveprofilebtn = new System.Windows.Forms.Button();
-            this.openSaveFolderbtn = new System.Windows.Forms.Button();
-            this.helpbtn = new System.Windows.Forms.Button();
+            this.buyStartersCheck = new System.Windows.Forms.CheckBox();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -293,6 +294,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.buyStartersCheck);
             this.tabPage3.Controls.Add(this.unlockGameKillerCheck);
             this.tabPage3.Controls.Add(this.startNewGamePlusbtn);
             this.tabPage3.Controls.Add(this.newGamePlusCharacterComboBox);
@@ -373,6 +375,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Save Files";
             // 
+            // helpbtn
+            // 
+            this.helpbtn.Location = new System.Drawing.Point(406, 12);
+            this.helpbtn.Name = "helpbtn";
+            this.helpbtn.Size = new System.Drawing.Size(89, 23);
+            this.helpbtn.TabIndex = 5;
+            this.helpbtn.Text = "Help";
+            this.helpbtn.UseVisualStyleBackColor = true;
+            this.helpbtn.Click += new System.EventHandler(this.helpbtn_Click);
+            // 
+            // openSaveFolderbtn
+            // 
+            this.openSaveFolderbtn.Location = new System.Drawing.Point(273, 12);
+            this.openSaveFolderbtn.Name = "openSaveFolderbtn";
+            this.openSaveFolderbtn.Size = new System.Drawing.Size(127, 23);
+            this.openSaveFolderbtn.TabIndex = 4;
+            this.openSaveFolderbtn.Text = "Open Save Folder";
+            this.openSaveFolderbtn.UseVisualStyleBackColor = true;
+            this.openSaveFolderbtn.Click += new System.EventHandler(this.openSaveFolderbtn_Click);
+            // 
             // newprofilebtn
             // 
             this.newprofilebtn.Location = new System.Drawing.Point(136, 12);
@@ -393,25 +415,15 @@
             this.saveprofilebtn.UseVisualStyleBackColor = true;
             this.saveprofilebtn.Click += new System.EventHandler(this.saveprofilebtn_Click);
             // 
-            // openSaveFolderbtn
+            // buyStartersCheck
             // 
-            this.openSaveFolderbtn.Location = new System.Drawing.Point(273, 12);
-            this.openSaveFolderbtn.Name = "openSaveFolderbtn";
-            this.openSaveFolderbtn.Size = new System.Drawing.Size(127, 23);
-            this.openSaveFolderbtn.TabIndex = 4;
-            this.openSaveFolderbtn.Text = "Open Save Folder";
-            this.openSaveFolderbtn.UseVisualStyleBackColor = true;
-            this.openSaveFolderbtn.Click += new System.EventHandler(this.openSaveFolderbtn_Click);
-            // 
-            // helpbtn
-            // 
-            this.helpbtn.Location = new System.Drawing.Point(406, 12);
-            this.helpbtn.Name = "helpbtn";
-            this.helpbtn.Size = new System.Drawing.Size(89, 23);
-            this.helpbtn.TabIndex = 5;
-            this.helpbtn.Text = "Help";
-            this.helpbtn.UseVisualStyleBackColor = true;
-            this.helpbtn.Click += new System.EventHandler(this.helpbtn_Click);
+            this.buyStartersCheck.AutoSize = true;
+            this.buyStartersCheck.Location = new System.Drawing.Point(146, 82);
+            this.buyStartersCheck.Name = "buyStartersCheck";
+            this.buyStartersCheck.Size = new System.Drawing.Size(127, 17);
+            this.buyStartersCheck.TabIndex = 6;
+            this.buyStartersCheck.Text = "Need to buy starters?";
+            this.buyStartersCheck.UseVisualStyleBackColor = true;
             // 
             // SavesManager
             // 
@@ -471,6 +483,7 @@
         private System.Windows.Forms.CheckBox unlockGameKillerCheck;
         private System.Windows.Forms.Button openSaveFolderbtn;
         private System.Windows.Forms.Button helpbtn;
+        private System.Windows.Forms.CheckBox buyStartersCheck;
     }
 }
 

@@ -21,6 +21,13 @@ namespace VSSaveManager
         private NameInputBox nameinput;
         private int lastSelectedIndex = 0;
         private bool NgPlusAble = false;
+        bool BuyBackCharacters
+        {
+            get
+            {
+                return buyStartersCheck.Checked;
+            }
+        }
 
         public SavesManager()
         {
@@ -72,6 +79,7 @@ namespace VSSaveManager
             AddCharacterName("FINO", "MissingN");
             AddCharacterName("AVATAR", "Avatar Infernas");
             AddCharacterName("SCOREJ", "Scorej-Oni");
+            //Moonspell
             AddCharacterName("MIANG", "Miang Moonspell");
             AddCharacterName("MENYA", "Menya Moonspell");
             AddCharacterName("TONY", "Gav'Et-Oni");
@@ -80,6 +88,15 @@ namespace VSSaveManager
             AddCharacterName("MCCOY", "McCoy-Oni");
             AddCharacterName("MEGAMENYA", "Megalo Menya Moonspell");
             AddCharacterName("MEGASYUUTO", "Megalo Syuuto Moonspell");
+            //Foscari
+            AddCharacterName("ELEANOR", "Eleanor Uziron");
+            AddCharacterName("VICTOR", "Maruto Cuts");
+            AddCharacterName("KEIRA", "Keitha Muort");
+            AddCharacterName("LUMINAIRE", "Luminaire Foscari");
+            AddCharacterName("GENEVIEVE", "Genevieve Gruyère");
+            AddCharacterName("MEGAGENEVIEVE", "Je-Ne-Viv");
+            AddCharacterName("CTRPCAKE", "Sammy");
+            AddCharacterName("GHOUL", "Rottin'Ghoul");
         }
 
         private string GetCharacterName(string ID)
@@ -286,24 +303,45 @@ namespace VSSaveManager
             Save["HighestFever"] = 0;
             if (NgPlusCharacter != "")
             {
-                Save["BoughtCharacters"] = JArray.FromObject(new string[]
+                if (BuyBackCharacters)
+                {
+                    Save["BoughtCharacters"] = JArray.FromObject(new string[]
                     {
-                    "ANTONIO",
-                    "IMELDA",
-                    "PASQUALINA",
-                    "GENNARO",
-                    NgPlusCharacter
+                        "ANTONIO",
+                        NgPlusCharacter
                     });
+                }
+                else
+                {
+                    Save["BoughtCharacters"] = JArray.FromObject(new string[]
+                    {
+                        "ANTONIO",
+                        "IMELDA",
+                        "PASQUALINA",
+                        "GENNARO",
+                        NgPlusCharacter
+                    });
+                }
             }
             else
             {
-                Save["BoughtCharacters"] = JArray.FromObject(new string[]
+                if (BuyBackCharacters)
+                {
+                    Save["BoughtCharacters"] = JArray.FromObject(new string[]
+                    {
+                        "ANTONIO"
+                    });
+                }
+                else
+                {
+                    Save["BoughtCharacters"] = JArray.FromObject(new string[]
                     {
                     "ANTONIO",
                     "IMELDA",
                     "PASQUALINA",
                     "GENNARO"
                     });
+                }
             }
             Save["BoughtPowerups"] = JArray.FromObject(new string[]
                 {
@@ -327,9 +365,21 @@ namespace VSSaveManager
             Save["UnlockedWeapons"] = JArray.FromObject(new string[]
                 {
                 });
-            Save["UnlockedCharacters"] = JArray.FromObject(new string[]
-                {
-                });
+            if (BuyBackCharacters)
+            {
+                Save["UnlockedCharacters"] = JArray.FromObject(new string[]
+                    {
+                        "IMELDA",
+                        "PASQUALINA",
+                        "GENNARO"
+                    });
+            }
+            else
+            {
+                Save["UnlockedCharacters"] = JArray.FromObject(new string[]
+                    {
+                    });
+            }
             {
                 string[] ItemsArray = Save["CollectedItems"].Values<string>().ToArray();
                 if (ItemsArray.Contains("RELIC_GRIMOIRE"))
