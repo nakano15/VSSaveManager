@@ -292,6 +292,7 @@ namespace VSSaveManager
                 {
 
                 });
+            Save["LifetimeCoins"] = 0;
             Save["RunPickups_Coins"] = 0;
             Save["OwO"] = 0;
             Save["CompletedHurries"] = 0;
