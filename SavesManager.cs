@@ -386,8 +386,6 @@ namespace VSSaveManager
                             HandyArray.Add("RELIC_GOUDA");
                         if (ItemsArray.Contains("RELIC_MAP"))
                             HandyArray.Add("RELIC_MAP");
-                        if (ItemsArray.Contains("RELIC_BANGER"))
-                            HandyArray.Add("RELIC_BANGER");
                         if (arcanaUnlockCheck.Checked && ItemsArray.Contains("RELIC_RANDOMAZZO"))
                             HandyArray.Add("RELIC_RANDOMAZZO");
                     }
@@ -395,6 +393,8 @@ namespace VSSaveManager
                         HandyArray.Add("RELIC_NOSEGLASSES");
                     if (ItemsArray.Contains("RELIC_SECRETS"))
                         HandyArray.Add("RELIC_SECRETS");
+                    if (ItemsArray.Contains("RELIC_BANGER"))
+                        HandyArray.Add("RELIC_BANGER");
                 }
                 Save["CollectedItems"] = JArray.FromObject(HandyArray.ToArray());
                 HandyArray.Clear();
