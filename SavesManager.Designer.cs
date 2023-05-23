@@ -52,6 +52,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.arcanaUnlockCheck = new System.Windows.Forms.CheckBox();
             this.buyStartersCheck = new System.Windows.Forms.CheckBox();
             this.unlockGameKillerCheck = new System.Windows.Forms.CheckBox();
             this.startNewGamePlusbtn = new System.Windows.Forms.Button();
@@ -64,16 +65,21 @@
             this.openSaveFolderbtn = new System.Windows.Forms.Button();
             this.newprofilebtn = new System.Windows.Forms.Button();
             this.saveprofilebtn = new System.Windows.Forms.Button();
-            this.arcanaUnlockCheck = new System.Windows.Forms.CheckBox();
+            this.noArtifactsCheck = new System.Windows.Forms.CheckBox();
+            this.removeProgressionArtsCheck = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.saveStoryBox = new System.Windows.Forms.RichTextBox();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.goldBox);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.lastMapNameBox);
@@ -295,6 +301,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.removeProgressionArtsCheck);
+            this.tabPage3.Controls.Add(this.noArtifactsCheck);
             this.tabPage3.Controls.Add(this.arcanaUnlockCheck);
             this.tabPage3.Controls.Add(this.buyStartersCheck);
             this.tabPage3.Controls.Add(this.unlockGameKillerCheck);
@@ -309,6 +317,18 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "New Game Plus";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // arcanaUnlockCheck
+            // 
+            this.arcanaUnlockCheck.AutoSize = true;
+            this.arcanaUnlockCheck.Checked = true;
+            this.arcanaUnlockCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.arcanaUnlockCheck.Location = new System.Drawing.Point(279, 82);
+            this.arcanaUnlockCheck.Name = "arcanaUnlockCheck";
+            this.arcanaUnlockCheck.Size = new System.Drawing.Size(120, 17);
+            this.arcanaUnlockCheck.TabIndex = 7;
+            this.arcanaUnlockCheck.Text = "Unlocked Arcanas?";
+            this.arcanaUnlockCheck.UseVisualStyleBackColor = true;
             // 
             // buyStartersCheck
             // 
@@ -332,7 +352,7 @@
             // 
             // startNewGamePlusbtn
             // 
-            this.startNewGamePlusbtn.Location = new System.Drawing.Point(6, 111);
+            this.startNewGamePlusbtn.Location = new System.Drawing.Point(6, 130);
             this.startNewGamePlusbtn.Name = "startNewGamePlusbtn";
             this.startNewGamePlusbtn.Size = new System.Drawing.Size(220, 43);
             this.startNewGamePlusbtn.TabIndex = 4;
@@ -427,17 +447,45 @@
             this.saveprofilebtn.UseVisualStyleBackColor = true;
             this.saveprofilebtn.Click += new System.EventHandler(this.saveprofilebtn_Click);
             // 
-            // arcanaUnlockCheck
+            // noArtifactsCheck
             // 
-            this.arcanaUnlockCheck.AutoSize = true;
-            this.arcanaUnlockCheck.Checked = true;
-            this.arcanaUnlockCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.arcanaUnlockCheck.Location = new System.Drawing.Point(279, 82);
-            this.arcanaUnlockCheck.Name = "arcanaUnlockCheck";
-            this.arcanaUnlockCheck.Size = new System.Drawing.Size(120, 17);
-            this.arcanaUnlockCheck.TabIndex = 7;
-            this.arcanaUnlockCheck.Text = "Unlocked Arcanas?";
-            this.arcanaUnlockCheck.UseVisualStyleBackColor = true;
+            this.noArtifactsCheck.AutoSize = true;
+            this.noArtifactsCheck.Location = new System.Drawing.Point(6, 105);
+            this.noArtifactsCheck.Name = "noArtifactsCheck";
+            this.noArtifactsCheck.Size = new System.Drawing.Size(120, 17);
+            this.noArtifactsCheck.TabIndex = 8;
+            this.noArtifactsCheck.Text = "Remove all Artifacts";
+            this.noArtifactsCheck.UseVisualStyleBackColor = true;
+            // 
+            // removeProgressionArtsCheck
+            // 
+            this.removeProgressionArtsCheck.AutoSize = true;
+            this.removeProgressionArtsCheck.Location = new System.Drawing.Point(146, 105);
+            this.removeProgressionArtsCheck.Name = "removeProgressionArtsCheck";
+            this.removeProgressionArtsCheck.Size = new System.Drawing.Size(165, 17);
+            this.removeProgressionArtsCheck.TabIndex = 9;
+            this.removeProgressionArtsCheck.Text = "Remove Progression Artifacts";
+            this.removeProgressionArtsCheck.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.saveStoryBox);
+            this.groupBox2.Location = new System.Drawing.Point(6, 199);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(492, 158);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Save Progress Log";
+            this.groupBox2.Visible = false;
+            // 
+            // saveStoryBox
+            // 
+            this.saveStoryBox.Location = new System.Drawing.Point(6, 19);
+            this.saveStoryBox.Name = "saveStoryBox";
+            this.saveStoryBox.ReadOnly = true;
+            this.saveStoryBox.Size = new System.Drawing.Size(480, 133);
+            this.saveStoryBox.TabIndex = 0;
+            this.saveStoryBox.Text = "";
             // 
             // SavesManager
             // 
@@ -457,6 +505,7 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -499,6 +548,10 @@
         private System.Windows.Forms.Button helpbtn;
         private System.Windows.Forms.CheckBox buyStartersCheck;
         private System.Windows.Forms.CheckBox arcanaUnlockCheck;
+        private System.Windows.Forms.CheckBox noArtifactsCheck;
+        private System.Windows.Forms.CheckBox removeProgressionArtsCheck;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RichTextBox saveStoryBox;
     }
 }
 

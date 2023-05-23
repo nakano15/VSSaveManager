@@ -19,7 +19,7 @@ namespace VSSaveManager
 
         private void SavesFolderSelection_Load(object sender, EventArgs e)
         {
-            if (!Main.SavesDirectoryExist)
+            /*if (!Main.SavesDirectoryExist)
             {
                 savesFolderList.Visible = false;
                 actionBtn.Text = "Close";
@@ -33,7 +33,10 @@ namespace VSSaveManager
                     savesFolderList.Items.Add(s);
                 }
                 savesFolderList.SelectedIndex = 0;
-            }
+            }*/
+            directoryBox.Text = Main.SteamFolderDirectory;
+            UpdateButtonState();
+            UpdateSavesList();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -41,8 +44,41 @@ namespace VSSaveManager
             if (Main.SavesDirectoryExist)
             {
                 Main.UserSaveFolder = Main.FoldersFound[savesFolderList.SelectedIndex];
+                Main.SaveSettingFile();
             }
             Close();
+        }
+
+        private void browseBtn_Click(object sender, EventArgs e)
+        {
+            folderBrowser.ShowDialog();
+            directoryBox.Text = folderBrowser.SelectedPath;
+            Main.SteamFolderDirectory = directoryBox.Text;
+            Main.InitializeDirectories();
+            UpdateButtonState();
+            UpdateSavesList();
+        }
+
+        private void UpdateButtonState()
+        {
+            actionBtn.Enabled = Main.SavesDirectoryExist;
+        }
+
+        private void UpdateSavesList()
+        {
+            savesFolderList.Items.Clear();
+            if (Main.SavesDirectoryExist)
+            {
+                foreach (string s in Main.FoldersFound)
+                {
+                    savesFolderList.Items.Add(s);
+                }
+                savesFolderList.SelectedIndex = 0;
+            }
+            else
+            {
+                savesFolderList.Text = "";
+            }
         }
     }
 }

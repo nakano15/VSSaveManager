@@ -18,7 +18,6 @@ namespace VSSaveManager
         private readonly Dictionary<string, string> CharacterNames = new Dictionary<string, string>();
 
         private SaveFile CurrentSaveFile;
-        private NameInputBox nameinput;
         private int lastSelectedIndex = 0;
         private bool NgPlusAble = false;
         bool BuyBackCharacters
@@ -236,12 +235,6 @@ namespace VSSaveManager
             return true;
         }
 
-        private void ShowNameInput()
-        {
-            nameinput = new NameInputBox();
-            nameinput.ShowDialog();
-        }
-
         private void newprofilebtn_Click(object sender, EventArgs e)
         {
             JObject NewSave = JObject.Parse(ClearSaveFile.ClearSave);
@@ -382,21 +375,27 @@ namespace VSSaveManager
                     });
             }
             {
-                string[] ItemsArray = Save["CollectedItems"].Values<string>().ToArray();
-                if (ItemsArray.Contains("RELIC_GRIMOIRE"))
-                    HandyArray.Add("RELIC_GRIMOIRE");
-                if (ItemsArray.Contains("RELIC_GOUDA"))
-                    HandyArray.Add("RELIC_GOUDA");
-                if (ItemsArray.Contains("RELIC_MAP"))
-                    HandyArray.Add("RELIC_MAP");
-                if (ItemsArray.Contains("RELIC_BANGER"))
-                    HandyArray.Add("RELIC_BANGER");
-                if (ItemsArray.Contains("RELIC_NOSEGLASSES"))
-                    HandyArray.Add("RELIC_NOSEGLASSES");
-                if (ItemsArray.Contains("RELIC_SECRETS"))
-                    HandyArray.Add("RELIC_SECRETS");
-                if (arcanaUnlockCheck.Checked && ItemsArray.Contains("RELIC_RANDOMAZZO"))
-                    HandyArray.Add("RELIC_RANDOMAZZO");
+                if (!noArtifactsCheck.Checked)
+                {
+                    string[] ItemsArray = Save["CollectedItems"].Values<string>().ToArray();
+                    if (!removeProgressionArtsCheck.Checked)
+                    {
+                        if (ItemsArray.Contains("RELIC_GRIMOIRE"))
+                            HandyArray.Add("RELIC_GRIMOIRE");
+                        if (ItemsArray.Contains("RELIC_GOUDA"))
+                            HandyArray.Add("RELIC_GOUDA");
+                        if (ItemsArray.Contains("RELIC_MAP"))
+                            HandyArray.Add("RELIC_MAP");
+                        if (ItemsArray.Contains("RELIC_BANGER"))
+                            HandyArray.Add("RELIC_BANGER");
+                        if (arcanaUnlockCheck.Checked && ItemsArray.Contains("RELIC_RANDOMAZZO"))
+                            HandyArray.Add("RELIC_RANDOMAZZO");
+                    }
+                    if (ItemsArray.Contains("RELIC_NOSEGLASSES"))
+                        HandyArray.Add("RELIC_NOSEGLASSES");
+                    if (ItemsArray.Contains("RELIC_SECRETS"))
+                        HandyArray.Add("RELIC_SECRETS");
+                }
                 Save["CollectedItems"] = JArray.FromObject(HandyArray.ToArray());
                 HandyArray.Clear();
             }
@@ -459,6 +458,13 @@ namespace VSSaveManager
             MessageBox.Show("Open Save Folder will open the folder where the game save file is located. Very important for altering save files.");
             MessageBox.Show("Every time you want to change your current save file, use a Vampire Survivors Save Editor to change the hashcode of it.");
             MessageBox.Show("Be sure to disable Steam Cloud Save before opening the game.");
+        }
+
+        private void WriteSaveStory()
+        {
+            string Story = "";
+
+            saveStoryBox.Text = Story;
         }
     }
 }

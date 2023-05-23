@@ -10,8 +10,8 @@ namespace VSSaveManager
 {
     public class Main
     {
-        internal static string GameSaveDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) + @"\Steam\userdata\";
-        internal static string ProfileSaveDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\My Games\Vampire Survivors Save Manager\";
+        internal static string SteamFolderDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) + @"\Steam";
+        internal static string GameSaveDirectory => SteamFolderDirectory + @"\userdata\";
         internal static string DesktopDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
         internal static string AppDataDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Vampire_Survivors_Data\";
         internal static string UserSaveFolder = "";
@@ -26,13 +26,6 @@ namespace VSSaveManager
             get
             {
                 return GameSaveDirectory + UserSaveFolder + @"\1794680\remote\";
-            }
-        }
-        internal static string GetFullProfileDirectory
-        {
-            get
-            {
-                return ProfileSaveDirectory + UserSaveFolder + @"\";
             }
         }
         const string SaveFileName = "SaveData";
@@ -51,6 +44,7 @@ namespace VSSaveManager
                 {
                     JObject save = new JObject();
                     save.Add("LastProfile", LastProfile);
+                    save.Add("SaveDirectory", SteamFolderDirectory);
                     writer.Write(save.ToString());
                 }
             }
@@ -67,6 +61,8 @@ namespace VSSaveManager
                         string Code = reader.ReadToEnd();
                         JObject save = JObject.Parse(Code);
                         LastProfile = save["LastProfile"].Value<string>();
+                        if (save.ContainsKey("SaveDirectory"))
+                            SteamFolderDirectory = save["SaveDirectory"].Value<string>();
                     }
                 }
             }
@@ -87,23 +83,6 @@ namespace VSSaveManager
             {
                 MainSaveFile = new SaveFile(LoadJsonFile(SaveFilePath));
             }
-        }
-
-        internal static bool ProfilePathExists(string Profile)
-        {
-            return Directory.Exists(GetFullGameSaveDirectory + Profile);
-        }
-
-        internal static void CreateProfile(string Profile)
-        {
-            string ProfileDirectory = GetFullProfileDirectory + Profile;
-            Directory.CreateDirectory(ProfileDirectory);
-        }
-
-        internal static void DeleteProfile(string Profile)
-        {
-            string ProfileDirectory = GetFullProfileDirectory + Profile;
-            Directory.Delete(ProfileDirectory, true);
         }
 
         internal static void SaveSaveFileInformation(SaveFile save)
