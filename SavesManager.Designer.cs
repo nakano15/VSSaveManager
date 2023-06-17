@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.saveStoryBox = new System.Windows.Forms.RichTextBox();
             this.goldBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lastMapNameBox = new System.Windows.Forms.TextBox();
@@ -52,6 +54,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.removeProgressionArtsCheck = new System.Windows.Forms.CheckBox();
+            this.noArtifactsCheck = new System.Windows.Forms.CheckBox();
             this.arcanaUnlockCheck = new System.Windows.Forms.CheckBox();
             this.buyStartersCheck = new System.Windows.Forms.CheckBox();
             this.unlockGameKillerCheck = new System.Windows.Forms.CheckBox();
@@ -65,16 +69,13 @@
             this.openSaveFolderbtn = new System.Windows.Forms.Button();
             this.newprofilebtn = new System.Windows.Forms.Button();
             this.saveprofilebtn = new System.Windows.Forms.Button();
-            this.noArtifactsCheck = new System.Windows.Forms.CheckBox();
-            this.removeProgressionArtsCheck = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.saveStoryBox = new System.Windows.Forms.RichTextBox();
+            this.rouletteActiveCheckBox = new System.Windows.Forms.CheckBox();
             this.tabPage2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage2
@@ -93,6 +94,26 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Save Information";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.saveStoryBox);
+            this.groupBox2.Location = new System.Drawing.Point(6, 199);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(492, 158);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Save Progress Log";
+            this.groupBox2.Visible = false;
+            // 
+            // saveStoryBox
+            // 
+            this.saveStoryBox.Location = new System.Drawing.Point(6, 19);
+            this.saveStoryBox.Name = "saveStoryBox";
+            this.saveStoryBox.ReadOnly = true;
+            this.saveStoryBox.Size = new System.Drawing.Size(480, 133);
+            this.saveStoryBox.TabIndex = 0;
+            this.saveStoryBox.Text = "";
             // 
             // goldBox
             // 
@@ -301,6 +322,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.rouletteActiveCheckBox);
             this.tabPage3.Controls.Add(this.removeProgressionArtsCheck);
             this.tabPage3.Controls.Add(this.noArtifactsCheck);
             this.tabPage3.Controls.Add(this.arcanaUnlockCheck);
@@ -317,6 +339,26 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "New Game Plus";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // removeProgressionArtsCheck
+            // 
+            this.removeProgressionArtsCheck.AutoSize = true;
+            this.removeProgressionArtsCheck.Location = new System.Drawing.Point(146, 105);
+            this.removeProgressionArtsCheck.Name = "removeProgressionArtsCheck";
+            this.removeProgressionArtsCheck.Size = new System.Drawing.Size(165, 17);
+            this.removeProgressionArtsCheck.TabIndex = 9;
+            this.removeProgressionArtsCheck.Text = "Remove Progression Artifacts";
+            this.removeProgressionArtsCheck.UseVisualStyleBackColor = true;
+            // 
+            // noArtifactsCheck
+            // 
+            this.noArtifactsCheck.AutoSize = true;
+            this.noArtifactsCheck.Location = new System.Drawing.Point(6, 105);
+            this.noArtifactsCheck.Name = "noArtifactsCheck";
+            this.noArtifactsCheck.Size = new System.Drawing.Size(120, 17);
+            this.noArtifactsCheck.TabIndex = 8;
+            this.noArtifactsCheck.Text = "Remove all Artifacts";
+            this.noArtifactsCheck.UseVisualStyleBackColor = true;
             // 
             // arcanaUnlockCheck
             // 
@@ -447,45 +489,15 @@
             this.saveprofilebtn.UseVisualStyleBackColor = true;
             this.saveprofilebtn.Click += new System.EventHandler(this.saveprofilebtn_Click);
             // 
-            // noArtifactsCheck
+            // rouletteActiveCheckBox
             // 
-            this.noArtifactsCheck.AutoSize = true;
-            this.noArtifactsCheck.Location = new System.Drawing.Point(6, 105);
-            this.noArtifactsCheck.Name = "noArtifactsCheck";
-            this.noArtifactsCheck.Size = new System.Drawing.Size(120, 17);
-            this.noArtifactsCheck.TabIndex = 8;
-            this.noArtifactsCheck.Text = "Remove all Artifacts";
-            this.noArtifactsCheck.UseVisualStyleBackColor = true;
-            // 
-            // removeProgressionArtsCheck
-            // 
-            this.removeProgressionArtsCheck.AutoSize = true;
-            this.removeProgressionArtsCheck.Location = new System.Drawing.Point(146, 105);
-            this.removeProgressionArtsCheck.Name = "removeProgressionArtsCheck";
-            this.removeProgressionArtsCheck.Size = new System.Drawing.Size(165, 17);
-            this.removeProgressionArtsCheck.TabIndex = 9;
-            this.removeProgressionArtsCheck.Text = "Remove Progression Artifacts";
-            this.removeProgressionArtsCheck.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.saveStoryBox);
-            this.groupBox2.Location = new System.Drawing.Point(6, 199);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(492, 158);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Save Progress Log";
-            this.groupBox2.Visible = false;
-            // 
-            // saveStoryBox
-            // 
-            this.saveStoryBox.Location = new System.Drawing.Point(6, 19);
-            this.saveStoryBox.Name = "saveStoryBox";
-            this.saveStoryBox.ReadOnly = true;
-            this.saveStoryBox.Size = new System.Drawing.Size(480, 133);
-            this.saveStoryBox.TabIndex = 0;
-            this.saveStoryBox.Text = "";
+            this.rouletteActiveCheckBox.AutoSize = true;
+            this.rouletteActiveCheckBox.Location = new System.Drawing.Point(316, 105);
+            this.rouletteActiveCheckBox.Name = "rouletteActiveCheckBox";
+            this.rouletteActiveCheckBox.Size = new System.Drawing.Size(141, 17);
+            this.rouletteActiveCheckBox.TabIndex = 10;
+            this.rouletteActiveCheckBox.Text = "Random Events Active?";
+            this.rouletteActiveCheckBox.UseVisualStyleBackColor = true;
             // 
             // SavesManager
             // 
@@ -499,13 +511,13 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -552,6 +564,7 @@
         private System.Windows.Forms.CheckBox removeProgressionArtsCheck;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RichTextBox saveStoryBox;
+        private System.Windows.Forms.CheckBox rouletteActiveCheckBox;
     }
 }
 

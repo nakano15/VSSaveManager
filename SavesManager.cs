@@ -256,6 +256,13 @@ namespace VSSaveManager
                 newGamePlusCharacterComboBox.Items.Add(GetCharacterName(s));
             newGamePlusCharacterComboBox.SelectedIndex = 0;
             startNewGamePlusbtn.Enabled = NgPlusAble;
+            bool HasTrisection = false;
+            foreach(string relic in CurrentSaveFile.SaveObject["CollectedItems"].Values<string>().ToArray())
+            {
+                if (relic == "RELIC_TRISECTION") HasTrisection = true;
+            }
+            rouletteActiveCheckBox.Enabled = HasTrisection;
+            rouletteActiveCheckBox.Checked = CurrentSaveFile.SaveObject["SelectedRandomEvents"].Value<bool>();
         }
 
         private void StartNewGamePlus()
@@ -268,6 +275,7 @@ namespace VSSaveManager
             Save["SelectedHyper"] = false;
             Save["SelectedHurry"] = false;
             Save["SelectedMazzo"] = false;
+            Save["SelectedRandomEvents"] = rouletteActiveCheckBox.Checked;
             Save["SelectedLimitBreak"] = false;
             Save["SelectedInverse"] = false;
             Save["SelectedReapers"] = false;
@@ -395,6 +403,8 @@ namespace VSSaveManager
                         HandyArray.Add("RELIC_SECRETS");
                     if (ItemsArray.Contains("RELIC_BANGER"))
                         HandyArray.Add("RELIC_BANGER");
+                    if (ItemsArray.Contains("RELIC_TRISECTION"))
+                        HandyArray.Add("RELIC_TRISECTION");
                 }
                 Save["CollectedItems"] = JArray.FromObject(HandyArray.ToArray());
                 HandyArray.Clear();
