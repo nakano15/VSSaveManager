@@ -282,6 +282,10 @@ namespace VSSaveManager
             newGamePlusCharacterComboBox4.Items.Add("4th: No Unlocked Character");
             foreach (string s in CurrentSaveFile.SaveObject["BoughtCharacters"].Values<string>())
             {
+                if (s == "ANTONIO" || s == "IMELDA" || s == "PASQUALINA" || s == "GENNARO")
+                {
+                    continue;
+                }
                 newGamePlusCharacterComboBox.Items.Add("1st: " + GetCharacterName(s));
                 newGamePlusCharacterComboBox2.Items.Add("2nd: " + GetCharacterName(s));
                 newGamePlusCharacterComboBox3.Items.Add("3rd: " + GetCharacterName(s));
