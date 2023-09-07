@@ -16,9 +16,11 @@ namespace VSSaveManager
     public partial class SavesManager : Form
     {
         private readonly Dictionary<string, string> CharacterNames = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> RelicNames = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> WeaponNames = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> StageNames = new Dictionary<string, string>();
 
         private SaveFile CurrentSaveFile;
-        private int lastSelectedIndex = 0;
         private bool NgPlusAble = false;
         bool BuyBackCharacters
         {
@@ -31,9 +33,15 @@ namespace VSSaveManager
         public SavesManager()
         {
             PopulateNameList();
+            PopulateWeaponList();
+            PopulateRelicList();
+            PopulateStageList();
             InitializeComponent();
             UpdateSelectedProfile();
         }
+
+        bool HasMoonspellDlc => CurrentSaveFile.SaveObject["UnlockedStages"].Values<string>().Contains("MOONSPELL");
+        bool HasFoscariDlc => CurrentSaveFile.SaveObject["UnlockedStages"].Values<string>().Contains("FOSCARI");
 
         private void PopulateNameList()
         {
@@ -98,6 +106,70 @@ namespace VSSaveManager
             AddCharacterName("GHOUL", "Rottin'Ghoul");
         }
 
+        void PopulateStageList()
+        {
+            AddStageName("FOREST", "Mad Forest");
+            AddStageName("BATCOUNTRY", "Bat Country");
+            AddStageName("BONEZONE", "Bone Zone");
+            AddStageName("CHAPEL", "Cappella Magna");
+            AddStageName("GREENACRES", "Green Acres");
+            AddStageName("LIBRARY", "Inlaid Library");
+            AddStageName("MACHINE", "Eudaimonia Machine");
+            AddStageName("MOLISE", "Il Molise");
+            AddStageName("MOONSPELL", "Mt. Moonspell");
+            AddStageName("RASH", "Boss Rash");
+            AddStageName("SINKING", "Moongolow");
+            AddStageName("STAGEX", "");
+            AddStageName("TOWER", "Gallo Tower");
+            AddStageName("TOWERBRIDGE", "Tiny Bridge");
+            AddStageName("WAREHOUSE", "");
+            AddStageName("FOSCARI", "Lake Foscari");
+            AddStageName("FOSCARI2", "Abyss Foscari");
+        }
+
+        void PopulateWeaponList()
+        {
+
+        }
+
+        void PopulateRelicList()
+        {
+
+        }
+
+        private string GetStageName(string ID)
+        {
+            if (StageNames.ContainsKey(ID)) return StageNames[ID];
+            return ID;
+        }
+
+        private void AddStageName(string ID, string Name)
+        {
+            StageNames.Add(ID, Name);
+        }
+
+        private string GetRelicName(string ID)
+        {
+            if (RelicNames.ContainsKey(ID)) return RelicNames[ID];
+            return ID;
+        }
+
+        private void AddRelicName(string ID, string Name)
+        {
+            RelicNames.Add(ID, Name);
+        }
+
+        private string GetWeaponName(string ID)
+        {
+            if (WeaponNames.ContainsKey(ID)) return WeaponNames[ID];
+            return ID;
+        }
+
+        private void AddWeaponName(string ID, string Name)
+        {
+            WeaponNames.Add(ID, Name);
+        }
+
         private string GetCharacterName(string ID)
         {
             if (CharacterNames.ContainsKey(ID)) return CharacterNames[ID];
@@ -108,53 +180,6 @@ namespace VSSaveManager
         {
             CharacterNames.Add(ID, Name);
         }
-
-        /*private void dobtn_Click(object sender, EventArgs e)
-        {
-            SaveFile save = new SaveFile(saveBox.Text);
-            goldBox.Text = ((int)(double)save.SaveObject["Coins"]).ToString();
-            characterList.Items.Clear();
-            foreach (string s in save.SaveObject["BoughtCharacters"].Values<string>())
-                characterList.Items.Add(s);
-            powerUpsList.Items.Clear();
-            Dictionary<string, byte> PowerUpLevels = new Dictionary<string, byte>();
-            foreach (string s in save.SaveObject["BoughtPowerups"].Values<string>())
-            {
-                if (PowerUpLevels.ContainsKey(s))
-                    PowerUpLevels[s]++;
-                else
-                    PowerUpLevels.Add(s, 1);
-            }
-            foreach (string s in PowerUpLevels.Keys)
-            {
-                powerUpsList.Items.Add(s + " Lv: " + PowerUpLevels[s]);
-            }
-            weaponsList.Items.Clear();
-            foreach (string s in save.SaveObject["CollectedWeapons"].Values<string>())
-            {
-                weaponsList.Items.Add(s);
-            }
-            stagesList.Items.Clear();
-            foreach (string s in save.SaveObject["UnlockedStages"].Values<string>())
-            {
-                stagesList.Items.Add(s);
-            }
-            secretsList.Items.Clear();
-            foreach (string s in save.SaveObject["Secrets"].Values<string>())
-            {
-                secretsList.Items.Add(s);
-            }
-            achievementsList.Items.Clear();
-            foreach (string s in save.SaveObject["Achievements"].Values<string>())
-            {
-                achievementsList.Items.Add(s);
-            }
-            unlockedStagesList.Items.Clear();
-            foreach (string s in save.SaveObject["UnlockedStages"].Values<string>())
-            {
-                unlockedStagesList.Items.Add(s);
-            }
-        }*/
 
         private void UpdateInformation(SaveFile save)
         {
@@ -251,10 +276,24 @@ namespace VSSaveManager
             NgPlusAble = CurrentSaveFile.SaveObject.Value<bool>("HasSeenFinalFireworks"); //("GreatestJubilee");
             ngpluselligibilitybox.Text = NgPlusAble ? "YES" : "NO";
             newGamePlusCharacterComboBox.Items.Clear();
-            newGamePlusCharacterComboBox.Items.Add("No Unlocked Character");
+            newGamePlusCharacterComboBox.Items.Add("1st: No Unlocked Character");
+            newGamePlusCharacterComboBox2.Items.Add("2nd: No Unlocked Character");
+            newGamePlusCharacterComboBox3.Items.Add("3rd: No Unlocked Character");
+            newGamePlusCharacterComboBox4.Items.Add("4th: No Unlocked Character");
             foreach (string s in CurrentSaveFile.SaveObject["BoughtCharacters"].Values<string>())
-                newGamePlusCharacterComboBox.Items.Add(GetCharacterName(s));
+            {
+                newGamePlusCharacterComboBox.Items.Add("1st: " + GetCharacterName(s));
+                newGamePlusCharacterComboBox2.Items.Add("2nd: " + GetCharacterName(s));
+                newGamePlusCharacterComboBox3.Items.Add("3rd: " + GetCharacterName(s));
+                newGamePlusCharacterComboBox4.Items.Add("4th: " + GetCharacterName(s));
+            }
             newGamePlusCharacterComboBox.SelectedIndex = 0;
+            newGamePlusCharacterComboBox2.SelectedIndex = 0;
+            newGamePlusCharacterComboBox3.SelectedIndex = 0;
+            newGamePlusCharacterComboBox4.SelectedIndex = 0;
+            newGamePlusCharacterComboBox2.Enabled = false;
+            newGamePlusCharacterComboBox3.Enabled = false;
+            newGamePlusCharacterComboBox4.Enabled = false;
             startNewGamePlusbtn.Enabled = NgPlusAble;
             bool HasTrisection = false;
             foreach(string relic in CurrentSaveFile.SaveObject["CollectedItems"].Values<string>().ToArray())
@@ -262,7 +301,7 @@ namespace VSSaveManager
                 if (relic == "RELIC_TRISECTION") HasTrisection = true;
             }
             rouletteActiveCheckBox.Enabled = HasTrisection;
-            rouletteActiveCheckBox.Checked = CurrentSaveFile.SaveObject["SelectedRandomEvents"].Value<bool>();
+            rouletteActiveCheckBox.Checked = HasTrisection && CurrentSaveFile.SaveObject["SelectedRandomEvents"].Value<bool>();
         }
 
         private void StartNewGamePlus()
@@ -303,27 +342,40 @@ namespace VSSaveManager
             Save["ShowSmallMapIcons"] = false;
             Save["LongestFever"] = 0;
             Save["HighestFever"] = 0;
-            if (NgPlusCharacter != "")
             {
+                List<string> Characters = new List<string>();
                 if (BuyBackCharacters)
                 {
-                    Save["BoughtCharacters"] = JArray.FromObject(new string[]
-                    {
-                        "ANTONIO",
-                        NgPlusCharacter
-                    });
+                    Characters.Add("ANTONIO");
                 }
                 else
                 {
-                    Save["BoughtCharacters"] = JArray.FromObject(new string[]
-                    {
-                        "ANTONIO",
-                        "IMELDA",
-                        "PASQUALINA",
-                        "GENNARO",
-                        NgPlusCharacter
-                    });
+                    Characters.Add("ANTONIO");
+                    Characters.Add("IMELDA");
+                    Characters.Add("PASQUALINA");
+                    Characters.Add("GENNARO");
                 }
+                if (newGamePlusCharacterComboBox.SelectedIndex > 0)
+                {
+                    Characters.Add(Save["BoughtCharacters"].Values<string>().ToArray()[newGamePlusCharacterComboBox.SelectedIndex - 1]);
+                }
+                if (newGamePlusCharacterComboBox2.SelectedIndex > 0 && newGamePlusCharacterComboBox2.Enabled)
+                {
+                    Characters.Add(Save["BoughtCharacters"].Values<string>().ToArray()[newGamePlusCharacterComboBox2.SelectedIndex - 1]);
+                }
+                if (newGamePlusCharacterComboBox3.SelectedIndex > 0 && newGamePlusCharacterComboBox3.Enabled)
+                {
+                    Characters.Add(Save["BoughtCharacters"].Values<string>().ToArray()[newGamePlusCharacterComboBox3.SelectedIndex - 1]);
+                }
+                if (newGamePlusCharacterComboBox4.SelectedIndex > 0 && newGamePlusCharacterComboBox4.Enabled)
+                {
+                    Characters.Add(Save["BoughtCharacters"].Values<string>().ToArray()[newGamePlusCharacterComboBox4.SelectedIndex - 1]);
+                }
+                Save["BoughtCharacters"] = JArray.FromObject(Characters.ToArray());
+                Characters.Clear();
+            }
+            if (NgPlusCharacter != "")
+            {
             }
             else
             {
@@ -473,8 +525,57 @@ namespace VSSaveManager
         private void WriteSaveStory()
         {
             string Story = "";
+            if (HasMoonspellDlc)
+            {
 
-            saveStoryBox.Text = Story;
+            }
+            saveStoryBox.Text = Story.Trim();
+        }
+
+        private void buyStartersCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateNgPlusNotifications();
+        }
+
+        void UpdateNgPlusNotifications()
+        {
+            string Text = "";
+            if (!NgPlusAble)
+            {
+                Text = "You must receive the gift from the Directer before you can start New Game Plus.";
+            }
+            else
+            {
+                if (buyStartersCheck.Checked)
+                {
+                    Text = "Need to buy starters option is not Coop mode friendly. Disable it if you intend to play with friends.";
+                }
+            }
+            ngplusnotificationtext.Text = Text;
+        }
+
+        private void newGamePlusCharacterComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            newGamePlusCharacterComboBox2.Enabled = newGamePlusCharacterComboBox.SelectedIndex > 0;
+            if (!newGamePlusCharacterComboBox2.Enabled)
+                newGamePlusCharacterComboBox3.Enabled = newGamePlusCharacterComboBox4.Enabled = false;
+        }
+
+        private void newGamePlusCharacterComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            newGamePlusCharacterComboBox3.Enabled = newGamePlusCharacterComboBox2.SelectedIndex > 0;
+            if (!newGamePlusCharacterComboBox3.Enabled)
+                newGamePlusCharacterComboBox4.Enabled = false;
+        }
+
+        private void newGamePlusCharacterComboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            newGamePlusCharacterComboBox4.Enabled = newGamePlusCharacterComboBox3.SelectedIndex > 0;
+        }
+
+        private void newGamePlusCharacterComboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

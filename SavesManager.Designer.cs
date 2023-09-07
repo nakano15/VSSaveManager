@@ -54,6 +54,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.ngplusnotificationtext = new System.Windows.Forms.RichTextBox();
+            this.rouletteActiveCheckBox = new System.Windows.Forms.CheckBox();
             this.removeProgressionArtsCheck = new System.Windows.Forms.CheckBox();
             this.noArtifactsCheck = new System.Windows.Forms.CheckBox();
             this.arcanaUnlockCheck = new System.Windows.Forms.CheckBox();
@@ -69,7 +71,9 @@
             this.openSaveFolderbtn = new System.Windows.Forms.Button();
             this.newprofilebtn = new System.Windows.Forms.Button();
             this.saveprofilebtn = new System.Windows.Forms.Button();
-            this.rouletteActiveCheckBox = new System.Windows.Forms.CheckBox();
+            this.newGamePlusCharacterComboBox2 = new System.Windows.Forms.ComboBox();
+            this.newGamePlusCharacterComboBox3 = new System.Windows.Forms.ComboBox();
+            this.newGamePlusCharacterComboBox4 = new System.Windows.Forms.ComboBox();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -322,6 +326,10 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.newGamePlusCharacterComboBox4);
+            this.tabPage3.Controls.Add(this.newGamePlusCharacterComboBox3);
+            this.tabPage3.Controls.Add(this.newGamePlusCharacterComboBox2);
+            this.tabPage3.Controls.Add(this.ngplusnotificationtext);
             this.tabPage3.Controls.Add(this.rouletteActiveCheckBox);
             this.tabPage3.Controls.Add(this.removeProgressionArtsCheck);
             this.tabPage3.Controls.Add(this.noArtifactsCheck);
@@ -340,10 +348,30 @@
             this.tabPage3.Text = "New Game Plus";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // ngplusnotificationtext
+            // 
+            this.ngplusnotificationtext.Location = new System.Drawing.Point(6, 212);
+            this.ngplusnotificationtext.Name = "ngplusnotificationtext";
+            this.ngplusnotificationtext.ReadOnly = true;
+            this.ngplusnotificationtext.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.ngplusnotificationtext.Size = new System.Drawing.Size(491, 148);
+            this.ngplusnotificationtext.TabIndex = 11;
+            this.ngplusnotificationtext.Text = "";
+            // 
+            // rouletteActiveCheckBox
+            // 
+            this.rouletteActiveCheckBox.AutoSize = true;
+            this.rouletteActiveCheckBox.Location = new System.Drawing.Point(232, 140);
+            this.rouletteActiveCheckBox.Name = "rouletteActiveCheckBox";
+            this.rouletteActiveCheckBox.Size = new System.Drawing.Size(141, 17);
+            this.rouletteActiveCheckBox.TabIndex = 10;
+            this.rouletteActiveCheckBox.Text = "Random Events Active?";
+            this.rouletteActiveCheckBox.UseVisualStyleBackColor = true;
+            // 
             // removeProgressionArtsCheck
             // 
             this.removeProgressionArtsCheck.AutoSize = true;
-            this.removeProgressionArtsCheck.Location = new System.Drawing.Point(146, 105);
+            this.removeProgressionArtsCheck.Location = new System.Drawing.Point(232, 113);
             this.removeProgressionArtsCheck.Name = "removeProgressionArtsCheck";
             this.removeProgressionArtsCheck.Size = new System.Drawing.Size(165, 17);
             this.removeProgressionArtsCheck.TabIndex = 9;
@@ -353,7 +381,7 @@
             // noArtifactsCheck
             // 
             this.noArtifactsCheck.AutoSize = true;
-            this.noArtifactsCheck.Location = new System.Drawing.Point(6, 105);
+            this.noArtifactsCheck.Location = new System.Drawing.Point(364, 84);
             this.noArtifactsCheck.Name = "noArtifactsCheck";
             this.noArtifactsCheck.Size = new System.Drawing.Size(120, 17);
             this.noArtifactsCheck.TabIndex = 8;
@@ -363,9 +391,7 @@
             // arcanaUnlockCheck
             // 
             this.arcanaUnlockCheck.AutoSize = true;
-            this.arcanaUnlockCheck.Checked = true;
-            this.arcanaUnlockCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.arcanaUnlockCheck.Location = new System.Drawing.Point(279, 82);
+            this.arcanaUnlockCheck.Location = new System.Drawing.Point(232, 84);
             this.arcanaUnlockCheck.Name = "arcanaUnlockCheck";
             this.arcanaUnlockCheck.Size = new System.Drawing.Size(120, 17);
             this.arcanaUnlockCheck.TabIndex = 7;
@@ -375,17 +401,18 @@
             // buyStartersCheck
             // 
             this.buyStartersCheck.AutoSize = true;
-            this.buyStartersCheck.Location = new System.Drawing.Point(146, 82);
+            this.buyStartersCheck.Location = new System.Drawing.Point(364, 57);
             this.buyStartersCheck.Name = "buyStartersCheck";
             this.buyStartersCheck.Size = new System.Drawing.Size(127, 17);
             this.buyStartersCheck.TabIndex = 6;
             this.buyStartersCheck.Text = "Need to buy starters?";
             this.buyStartersCheck.UseVisualStyleBackColor = true;
+            this.buyStartersCheck.CheckedChanged += new System.EventHandler(this.buyStartersCheck_CheckedChanged);
             // 
             // unlockGameKillerCheck
             // 
             this.unlockGameKillerCheck.AutoSize = true;
-            this.unlockGameKillerCheck.Location = new System.Drawing.Point(6, 82);
+            this.unlockGameKillerCheck.Location = new System.Drawing.Point(232, 57);
             this.unlockGameKillerCheck.Name = "unlockGameKillerCheck";
             this.unlockGameKillerCheck.Size = new System.Drawing.Size(134, 17);
             this.unlockGameKillerCheck.TabIndex = 5;
@@ -394,7 +421,7 @@
             // 
             // startNewGamePlusbtn
             // 
-            this.startNewGamePlusbtn.Location = new System.Drawing.Point(6, 130);
+            this.startNewGamePlusbtn.Location = new System.Drawing.Point(6, 163);
             this.startNewGamePlusbtn.Name = "startNewGamePlusbtn";
             this.startNewGamePlusbtn.Size = new System.Drawing.Size(220, 43);
             this.startNewGamePlusbtn.TabIndex = 4;
@@ -404,20 +431,22 @@
             // 
             // newGamePlusCharacterComboBox
             // 
+            this.newGamePlusCharacterComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.newGamePlusCharacterComboBox.FormattingEnabled = true;
             this.newGamePlusCharacterComboBox.Location = new System.Drawing.Point(6, 55);
             this.newGamePlusCharacterComboBox.Name = "newGamePlusCharacterComboBox";
             this.newGamePlusCharacterComboBox.Size = new System.Drawing.Size(220, 21);
             this.newGamePlusCharacterComboBox.TabIndex = 3;
+            this.newGamePlusCharacterComboBox.SelectedIndexChanged += new System.EventHandler(this.newGamePlusCharacterComboBox_SelectedIndexChanged);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(3, 39);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(225, 13);
+            this.label12.Size = new System.Drawing.Size(221, 13);
             this.label12.TabIndex = 2;
-            this.label12.Text = "Pick a Character to start New Game Plus with.";
+            this.label12.Text = "Pick Characters to start New Game Plus with.";
             // 
             // ngpluselligibilitybox
             // 
@@ -489,15 +518,35 @@
             this.saveprofilebtn.UseVisualStyleBackColor = true;
             this.saveprofilebtn.Click += new System.EventHandler(this.saveprofilebtn_Click);
             // 
-            // rouletteActiveCheckBox
+            // newGamePlusCharacterComboBox2
             // 
-            this.rouletteActiveCheckBox.AutoSize = true;
-            this.rouletteActiveCheckBox.Location = new System.Drawing.Point(316, 105);
-            this.rouletteActiveCheckBox.Name = "rouletteActiveCheckBox";
-            this.rouletteActiveCheckBox.Size = new System.Drawing.Size(141, 17);
-            this.rouletteActiveCheckBox.TabIndex = 10;
-            this.rouletteActiveCheckBox.Text = "Random Events Active?";
-            this.rouletteActiveCheckBox.UseVisualStyleBackColor = true;
+            this.newGamePlusCharacterComboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.newGamePlusCharacterComboBox2.FormattingEnabled = true;
+            this.newGamePlusCharacterComboBox2.Location = new System.Drawing.Point(6, 82);
+            this.newGamePlusCharacterComboBox2.Name = "newGamePlusCharacterComboBox2";
+            this.newGamePlusCharacterComboBox2.Size = new System.Drawing.Size(220, 21);
+            this.newGamePlusCharacterComboBox2.TabIndex = 12;
+            this.newGamePlusCharacterComboBox2.SelectedIndexChanged += new System.EventHandler(this.newGamePlusCharacterComboBox2_SelectedIndexChanged);
+            // 
+            // newGamePlusCharacterComboBox3
+            // 
+            this.newGamePlusCharacterComboBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.newGamePlusCharacterComboBox3.FormattingEnabled = true;
+            this.newGamePlusCharacterComboBox3.Location = new System.Drawing.Point(6, 109);
+            this.newGamePlusCharacterComboBox3.Name = "newGamePlusCharacterComboBox3";
+            this.newGamePlusCharacterComboBox3.Size = new System.Drawing.Size(220, 21);
+            this.newGamePlusCharacterComboBox3.TabIndex = 13;
+            this.newGamePlusCharacterComboBox3.SelectedIndexChanged += new System.EventHandler(this.newGamePlusCharacterComboBox3_SelectedIndexChanged);
+            // 
+            // newGamePlusCharacterComboBox4
+            // 
+            this.newGamePlusCharacterComboBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.newGamePlusCharacterComboBox4.FormattingEnabled = true;
+            this.newGamePlusCharacterComboBox4.Location = new System.Drawing.Point(6, 136);
+            this.newGamePlusCharacterComboBox4.Name = "newGamePlusCharacterComboBox4";
+            this.newGamePlusCharacterComboBox4.Size = new System.Drawing.Size(220, 21);
+            this.newGamePlusCharacterComboBox4.TabIndex = 14;
+            this.newGamePlusCharacterComboBox4.SelectedIndexChanged += new System.EventHandler(this.newGamePlusCharacterComboBox4_SelectedIndexChanged);
             // 
             // SavesManager
             // 
@@ -565,6 +614,10 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RichTextBox saveStoryBox;
         private System.Windows.Forms.CheckBox rouletteActiveCheckBox;
+        private System.Windows.Forms.RichTextBox ngplusnotificationtext;
+        private System.Windows.Forms.ComboBox newGamePlusCharacterComboBox4;
+        private System.Windows.Forms.ComboBox newGamePlusCharacterComboBox3;
+        private System.Windows.Forms.ComboBox newGamePlusCharacterComboBox2;
     }
 }
 
