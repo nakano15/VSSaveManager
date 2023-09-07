@@ -556,26 +556,69 @@ namespace VSSaveManager
 
         private void newGamePlusCharacterComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (newGamePlusCharacterComboBox.SelectedIndex > 0)
+            {
+                if (newGamePlusCharacterComboBox.SelectedIndex == newGamePlusCharacterComboBox2.SelectedIndex ||
+                    newGamePlusCharacterComboBox.SelectedIndex == newGamePlusCharacterComboBox3.SelectedIndex ||
+                    newGamePlusCharacterComboBox.SelectedIndex == newGamePlusCharacterComboBox4.SelectedIndex)
+                {
+                    newGamePlusCharacterComboBox.SelectedIndex = 0;
+                }
+            }
             newGamePlusCharacterComboBox2.Enabled = newGamePlusCharacterComboBox.SelectedIndex > 0;
             if (!newGamePlusCharacterComboBox2.Enabled)
+            {
+                newGamePlusCharacterComboBox2.SelectedIndex = newGamePlusCharacterComboBox3.SelectedIndex = newGamePlusCharacterComboBox4.SelectedIndex = 0;
                 newGamePlusCharacterComboBox3.Enabled = newGamePlusCharacterComboBox4.Enabled = false;
+            }
         }
 
         private void newGamePlusCharacterComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (newGamePlusCharacterComboBox2.SelectedIndex > 0)
+            {
+                if (newGamePlusCharacterComboBox2.SelectedIndex == newGamePlusCharacterComboBox.SelectedIndex ||
+                    newGamePlusCharacterComboBox2.SelectedIndex == newGamePlusCharacterComboBox3.SelectedIndex ||
+                    newGamePlusCharacterComboBox2.SelectedIndex == newGamePlusCharacterComboBox4.SelectedIndex)
+                {
+                    newGamePlusCharacterComboBox2.SelectedIndex = 0;
+                }
+            }
             newGamePlusCharacterComboBox3.Enabled = newGamePlusCharacterComboBox2.SelectedIndex > 0;
             if (!newGamePlusCharacterComboBox3.Enabled)
+            {
+                newGamePlusCharacterComboBox3.SelectedIndex = newGamePlusCharacterComboBox4.SelectedIndex = 0;
                 newGamePlusCharacterComboBox4.Enabled = false;
+            }
         }
 
         private void newGamePlusCharacterComboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (newGamePlusCharacterComboBox3.SelectedIndex > 0)
+            {
+                if (newGamePlusCharacterComboBox3.SelectedIndex == newGamePlusCharacterComboBox.SelectedIndex ||
+                    newGamePlusCharacterComboBox3.SelectedIndex == newGamePlusCharacterComboBox2.SelectedIndex ||
+                    newGamePlusCharacterComboBox3.SelectedIndex == newGamePlusCharacterComboBox4.SelectedIndex)
+                {
+                    newGamePlusCharacterComboBox3.SelectedIndex = 0;
+                }
+            }
             newGamePlusCharacterComboBox4.Enabled = newGamePlusCharacterComboBox3.SelectedIndex > 0;
+            if (!newGamePlusCharacterComboBox4.Enabled)
+                newGamePlusCharacterComboBox4.SelectedIndex = 0;
         }
 
         private void newGamePlusCharacterComboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (newGamePlusCharacterComboBox4.SelectedIndex > 0)
+            {
+                if (newGamePlusCharacterComboBox4.SelectedIndex == newGamePlusCharacterComboBox.SelectedIndex ||
+                    newGamePlusCharacterComboBox4.SelectedIndex == newGamePlusCharacterComboBox3.SelectedIndex ||
+                    newGamePlusCharacterComboBox4.SelectedIndex == newGamePlusCharacterComboBox2.SelectedIndex)
+                {
+                    newGamePlusCharacterComboBox4.SelectedIndex = 0;
+                }
+            }
         }
     }
 }
