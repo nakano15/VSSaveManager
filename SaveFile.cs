@@ -56,6 +56,7 @@ namespace VSSaveManager
 
         public void UpdateChecksum()
         {
+            return; //Disabled for now.
             SaveObject["checksum"] = "";
             using (SHA256 crypto = SHA256.Create())
             {
