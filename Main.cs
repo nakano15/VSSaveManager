@@ -87,29 +87,14 @@ namespace VSSaveManager
 
         internal static void SaveSaveFileInformation(SaveFile save)
         {
-            /*if (!Directory.Exists(GetFullProfileDirectory + save.Profile))
-                Directory.CreateDirectory(GetFullProfileDirectory + save.Profile);
-            string SaveDataPath;
-            if (IsMainSaveFile)
-            {
-                SaveDataPath = DesktopDirectory + SaveFileName;
-                if (File.Exists(SaveDataPath))
-                    File.Delete(SaveDataPath);
-                using (FileStream stream = new FileStream(SaveDataPath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
-                {
-                    using (StreamWriter writer = new StreamWriter(stream))
-                    {
-                        writer.Write(save.SaveObject.ToString());
-                    }
-                }
-            }*/
-            string SaveDataPath = DesktopDirectory + SaveFileName;//GetFullProfileDirectory + save.Profile + @"\" + SaveFileName;
+            string SaveDataPath = DesktopDirectory + SaveFileName;
+            save.UpdateChecksum();
             if (File.Exists(SaveDataPath)) File.Delete(SaveDataPath);
             using (FileStream stream = new FileStream(SaveDataPath, FileMode.CreateNew))
             {
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
-                    writer.Write(save.SaveObject.ToString());
+                    writer.Write(save.GetJsonString());
                 }
             }
         }

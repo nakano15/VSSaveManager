@@ -59,14 +59,28 @@ namespace VSSaveManager
             SaveObject["checksum"] = "";
             using (SHA256 crypto = SHA256.Create())
             {
-                byte[] NewHashByte = crypto.ComputeHash(Encoding.ASCII.GetBytes(SaveObject.ToString()));
-                string NewHash = "";
+                string Json = SaveObject.ToString();
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    using (BinaryWriter writer = new BinaryWriter(stream))
+                    {
+                        writer.Write(GetJsonString());
+                        byte[] NewHashByte = crypto.ComputeHash(stream);
+                        SaveObject["checksum"] = BitConverter.ToString(NewHashByte).Replace("-", "").ToLower();
+                    }
+                }
+                /*string NewHash = "";
                 foreach(byte b in NewHashByte)
                 {
                     NewHash += string.Format("{0:x2}", b);
                 }
-                SaveObject["checksum"] = NewHash;
+                SaveObject["checksum"] = NewHash;*/
             }
+        }
+
+        public string GetJsonString()
+        {
+            return SaveObject.ToString().Replace("\"checksum\": \"", "\"checksum\":\"");
         }
     }
 }

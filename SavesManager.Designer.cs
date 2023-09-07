@@ -432,6 +432,7 @@
             // newGamePlusCharacterComboBox
             // 
             this.newGamePlusCharacterComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.newGamePlusCharacterComboBox.ForeColor = System.Drawing.SystemColors.Window;
             this.newGamePlusCharacterComboBox.FormattingEnabled = true;
             this.newGamePlusCharacterComboBox.Location = new System.Drawing.Point(6, 55);
             this.newGamePlusCharacterComboBox.Name = "newGamePlusCharacterComboBox";
@@ -521,6 +522,7 @@
             // newGamePlusCharacterComboBox2
             // 
             this.newGamePlusCharacterComboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.newGamePlusCharacterComboBox2.ForeColor = System.Drawing.SystemColors.Window;
             this.newGamePlusCharacterComboBox2.FormattingEnabled = true;
             this.newGamePlusCharacterComboBox2.Location = new System.Drawing.Point(6, 82);
             this.newGamePlusCharacterComboBox2.Name = "newGamePlusCharacterComboBox2";

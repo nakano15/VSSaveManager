@@ -378,29 +378,6 @@ namespace VSSaveManager
                 Save["BoughtCharacters"] = JArray.FromObject(Characters.ToArray());
                 Characters.Clear();
             }
-            if (NgPlusCharacter != "")
-            {
-            }
-            else
-            {
-                if (BuyBackCharacters)
-                {
-                    Save["BoughtCharacters"] = JArray.FromObject(new string[]
-                    {
-                        "ANTONIO"
-                    });
-                }
-                else
-                {
-                    Save["BoughtCharacters"] = JArray.FromObject(new string[]
-                    {
-                    "ANTONIO",
-                    "IMELDA",
-                    "PASQUALINA",
-                    "GENNARO"
-                    });
-                }
-            }
             Save["BoughtPowerups"] = JArray.FromObject(new string[]
                 {
                 });
