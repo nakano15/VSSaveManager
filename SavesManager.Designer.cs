@@ -54,6 +54,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.newGamePlusCharacterComboBox4 = new System.Windows.Forms.ComboBox();
+            this.newGamePlusCharacterComboBox3 = new System.Windows.Forms.ComboBox();
+            this.newGamePlusCharacterComboBox2 = new System.Windows.Forms.ComboBox();
             this.ngplusnotificationtext = new System.Windows.Forms.RichTextBox();
             this.rouletteActiveCheckBox = new System.Windows.Forms.CheckBox();
             this.removeProgressionArtsCheck = new System.Windows.Forms.CheckBox();
@@ -71,9 +74,8 @@
             this.openSaveFolderbtn = new System.Windows.Forms.Button();
             this.newprofilebtn = new System.Windows.Forms.Button();
             this.saveprofilebtn = new System.Windows.Forms.Button();
-            this.newGamePlusCharacterComboBox2 = new System.Windows.Forms.ComboBox();
-            this.newGamePlusCharacterComboBox3 = new System.Windows.Forms.ComboBox();
-            this.newGamePlusCharacterComboBox4 = new System.Windows.Forms.ComboBox();
+            this.adventureUnlockCheckbox = new System.Windows.Forms.CheckBox();
+            this.randomLevelUpCheckBox = new System.Windows.Forms.CheckBox();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -326,6 +328,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.randomLevelUpCheckBox);
+            this.tabPage3.Controls.Add(this.adventureUnlockCheckbox);
             this.tabPage3.Controls.Add(this.newGamePlusCharacterComboBox4);
             this.tabPage3.Controls.Add(this.newGamePlusCharacterComboBox3);
             this.tabPage3.Controls.Add(this.newGamePlusCharacterComboBox2);
@@ -347,6 +351,37 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "New Game Plus";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // newGamePlusCharacterComboBox4
+            // 
+            this.newGamePlusCharacterComboBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.newGamePlusCharacterComboBox4.FormattingEnabled = true;
+            this.newGamePlusCharacterComboBox4.Location = new System.Drawing.Point(6, 136);
+            this.newGamePlusCharacterComboBox4.Name = "newGamePlusCharacterComboBox4";
+            this.newGamePlusCharacterComboBox4.Size = new System.Drawing.Size(220, 21);
+            this.newGamePlusCharacterComboBox4.TabIndex = 14;
+            this.newGamePlusCharacterComboBox4.SelectedIndexChanged += new System.EventHandler(this.newGamePlusCharacterComboBox4_SelectedIndexChanged);
+            // 
+            // newGamePlusCharacterComboBox3
+            // 
+            this.newGamePlusCharacterComboBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.newGamePlusCharacterComboBox3.FormattingEnabled = true;
+            this.newGamePlusCharacterComboBox3.Location = new System.Drawing.Point(6, 109);
+            this.newGamePlusCharacterComboBox3.Name = "newGamePlusCharacterComboBox3";
+            this.newGamePlusCharacterComboBox3.Size = new System.Drawing.Size(220, 21);
+            this.newGamePlusCharacterComboBox3.TabIndex = 13;
+            this.newGamePlusCharacterComboBox3.SelectedIndexChanged += new System.EventHandler(this.newGamePlusCharacterComboBox3_SelectedIndexChanged);
+            // 
+            // newGamePlusCharacterComboBox2
+            // 
+            this.newGamePlusCharacterComboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.newGamePlusCharacterComboBox2.ForeColor = System.Drawing.SystemColors.Window;
+            this.newGamePlusCharacterComboBox2.FormattingEnabled = true;
+            this.newGamePlusCharacterComboBox2.Location = new System.Drawing.Point(6, 82);
+            this.newGamePlusCharacterComboBox2.Name = "newGamePlusCharacterComboBox2";
+            this.newGamePlusCharacterComboBox2.Size = new System.Drawing.Size(220, 21);
+            this.newGamePlusCharacterComboBox2.TabIndex = 12;
+            this.newGamePlusCharacterComboBox2.SelectedIndexChanged += new System.EventHandler(this.newGamePlusCharacterComboBox2_SelectedIndexChanged);
             // 
             // ngplusnotificationtext
             // 
@@ -519,36 +554,25 @@
             this.saveprofilebtn.UseVisualStyleBackColor = true;
             this.saveprofilebtn.Click += new System.EventHandler(this.saveprofilebtn_Click);
             // 
-            // newGamePlusCharacterComboBox2
+            // adventureUnlockCheckbox
             // 
-            this.newGamePlusCharacterComboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.newGamePlusCharacterComboBox2.ForeColor = System.Drawing.SystemColors.Window;
-            this.newGamePlusCharacterComboBox2.FormattingEnabled = true;
-            this.newGamePlusCharacterComboBox2.Location = new System.Drawing.Point(6, 82);
-            this.newGamePlusCharacterComboBox2.Name = "newGamePlusCharacterComboBox2";
-            this.newGamePlusCharacterComboBox2.Size = new System.Drawing.Size(220, 21);
-            this.newGamePlusCharacterComboBox2.TabIndex = 12;
-            this.newGamePlusCharacterComboBox2.SelectedIndexChanged += new System.EventHandler(this.newGamePlusCharacterComboBox2_SelectedIndexChanged);
+            this.adventureUnlockCheckbox.AutoSize = true;
+            this.adventureUnlockCheckbox.Location = new System.Drawing.Point(232, 163);
+            this.adventureUnlockCheckbox.Name = "adventureUnlockCheckbox";
+            this.adventureUnlockCheckbox.Size = new System.Drawing.Size(135, 17);
+            this.adventureUnlockCheckbox.TabIndex = 15;
+            this.adventureUnlockCheckbox.Text = "Adventures Unlocked?";
+            this.adventureUnlockCheckbox.UseVisualStyleBackColor = true;
             // 
-            // newGamePlusCharacterComboBox3
+            // randomLevelUpCheckBox
             // 
-            this.newGamePlusCharacterComboBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.newGamePlusCharacterComboBox3.FormattingEnabled = true;
-            this.newGamePlusCharacterComboBox3.Location = new System.Drawing.Point(6, 109);
-            this.newGamePlusCharacterComboBox3.Name = "newGamePlusCharacterComboBox3";
-            this.newGamePlusCharacterComboBox3.Size = new System.Drawing.Size(220, 21);
-            this.newGamePlusCharacterComboBox3.TabIndex = 13;
-            this.newGamePlusCharacterComboBox3.SelectedIndexChanged += new System.EventHandler(this.newGamePlusCharacterComboBox3_SelectedIndexChanged);
-            // 
-            // newGamePlusCharacterComboBox4
-            // 
-            this.newGamePlusCharacterComboBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.newGamePlusCharacterComboBox4.FormattingEnabled = true;
-            this.newGamePlusCharacterComboBox4.Location = new System.Drawing.Point(6, 136);
-            this.newGamePlusCharacterComboBox4.Name = "newGamePlusCharacterComboBox4";
-            this.newGamePlusCharacterComboBox4.Size = new System.Drawing.Size(220, 21);
-            this.newGamePlusCharacterComboBox4.TabIndex = 14;
-            this.newGamePlusCharacterComboBox4.SelectedIndexChanged += new System.EventHandler(this.newGamePlusCharacterComboBox4_SelectedIndexChanged);
+            this.randomLevelUpCheckBox.AutoSize = true;
+            this.randomLevelUpCheckBox.Location = new System.Drawing.Point(231, 186);
+            this.randomLevelUpCheckBox.Name = "randomLevelUpCheckBox";
+            this.randomLevelUpCheckBox.Size = new System.Drawing.Size(167, 17);
+            this.randomLevelUpCheckBox.TabIndex = 16;
+            this.randomLevelUpCheckBox.Text = "Random Level Up Unlocked?";
+            this.randomLevelUpCheckBox.UseVisualStyleBackColor = true;
             // 
             // SavesManager
             // 
@@ -620,6 +644,8 @@
         private System.Windows.Forms.ComboBox newGamePlusCharacterComboBox4;
         private System.Windows.Forms.ComboBox newGamePlusCharacterComboBox3;
         private System.Windows.Forms.ComboBox newGamePlusCharacterComboBox2;
+        private System.Windows.Forms.CheckBox adventureUnlockCheckbox;
+        private System.Windows.Forms.CheckBox randomLevelUpCheckBox;
     }
 }
 

@@ -40,8 +40,11 @@ namespace VSSaveManager
             UpdateSelectedProfile();
         }
 
+        static List<int> NgPlusCharactersIndex = new List<int>();
+
         bool HasMoonspellDlc => CurrentSaveFile.SaveObject["UnlockedStages"].Values<string>().Contains("MOONSPELL");
         bool HasFoscariDlc => CurrentSaveFile.SaveObject["UnlockedStages"].Values<string>().Contains("FOSCARI");
+        bool HasEmergencyMeetingDlc => CurrentSaveFile.SaveObject["UnlockedStages"].Values<string>().Contains("POLUS");
 
         private void PopulateNameList()
         {
@@ -86,6 +89,9 @@ namespace VSSaveManager
             AddCharacterName("FINO", "MissingN");
             AddCharacterName("AVATAR", "Avatar Infernas");
             AddCharacterName("SCOREJ", "Scorej-Oni");
+            AddCharacterName("SHEMOONITA", "She-Moon Eeta");
+            AddCharacterName("SPACEDUDE", "Space Dude");
+            AddCharacterName("TUPU", "Bat Robbert");
             //Moonspell
             AddCharacterName("MIANG", "Miang Moonspell");
             AddCharacterName("MENYA", "Menya Moonspell");
@@ -104,6 +110,8 @@ namespace VSSaveManager
             AddCharacterName("MEGAGENEVIEVE", "Je-Ne-Viv");
             AddCharacterName("CTRPCAKE", "Sammy");
             AddCharacterName("GHOUL", "Rottin'Ghoul");
+            // Emergency Meeting
+
         }
 
         void PopulateStageList()
@@ -276,20 +284,26 @@ namespace VSSaveManager
             NgPlusAble = CurrentSaveFile.SaveObject.Value<bool>("HasSeenFinalFireworks"); //("GreatestJubilee");
             ngpluselligibilitybox.Text = NgPlusAble ? "YES" : "NO";
             newGamePlusCharacterComboBox.Items.Clear();
+            newGamePlusCharacterComboBox2.Items.Clear();
+            newGamePlusCharacterComboBox3.Items.Clear();
+            newGamePlusCharacterComboBox4.Items.Clear();
             newGamePlusCharacterComboBox.Items.Add("1st: No Unlocked Character");
             newGamePlusCharacterComboBox2.Items.Add("2nd: No Unlocked Character");
             newGamePlusCharacterComboBox3.Items.Add("3rd: No Unlocked Character");
             newGamePlusCharacterComboBox4.Items.Add("4th: No Unlocked Character");
+            NgPlusCharactersIndex.Clear();
+            int Index = 0;
             foreach (string s in CurrentSaveFile.SaveObject["BoughtCharacters"].Values<string>())
             {
-                if (s == "ANTONIO" || s == "IMELDA" || s == "PASQUALINA" || s == "GENNARO")
+                if (s != "ANTONIO")
                 {
-                    continue;
+                    newGamePlusCharacterComboBox.Items.Add(GetCharacterName(s));
+                    newGamePlusCharacterComboBox2.Items.Add(GetCharacterName(s));
+                    newGamePlusCharacterComboBox3.Items.Add(GetCharacterName(s));
+                    newGamePlusCharacterComboBox4.Items.Add(GetCharacterName(s));
+                    NgPlusCharactersIndex.Add(Index);
                 }
-                newGamePlusCharacterComboBox.Items.Add("1st: " + GetCharacterName(s));
-                newGamePlusCharacterComboBox2.Items.Add("2nd: " + GetCharacterName(s));
-                newGamePlusCharacterComboBox3.Items.Add("3rd: " + GetCharacterName(s));
-                newGamePlusCharacterComboBox4.Items.Add("4th: " + GetCharacterName(s));
+                Index++;
             }
             newGamePlusCharacterComboBox.SelectedIndex = 0;
             newGamePlusCharacterComboBox2.SelectedIndex = 0;
@@ -299,13 +313,19 @@ namespace VSSaveManager
             newGamePlusCharacterComboBox3.Enabled = false;
             newGamePlusCharacterComboBox4.Enabled = false;
             startNewGamePlusbtn.Enabled = NgPlusAble;
-            bool HasTrisection = false;
+            bool HasTrisection = false, HasAtlas = false, HasRandomLevelUp = false;
             foreach(string relic in CurrentSaveFile.SaveObject["CollectedItems"].Values<string>().ToArray())
             {
                 if (relic == "RELIC_TRISECTION") HasTrisection = true;
+                if (relic == "RELIC_ATLAS") HasAtlas = true;
+                if (relic == "RELIC_BRAVESTORY") HasRandomLevelUp = true;
             }
             rouletteActiveCheckBox.Enabled = HasTrisection;
             rouletteActiveCheckBox.Checked = HasTrisection && CurrentSaveFile.SaveObject["SelectedRandomEvents"].Value<bool>();
+            adventureUnlockCheckbox.Enabled = HasAtlas;
+            adventureUnlockCheckbox.Checked = HasAtlas;
+            randomLevelUpCheckBox.Enabled = HasRandomLevelUp;
+            randomLevelUpCheckBox.Checked = HasRandomLevelUp && CurrentSaveFile.SaveObject["SelectedRandomLevels"].Value<bool>();
         }
 
         private void StartNewGamePlus()
@@ -323,6 +343,8 @@ namespace VSSaveManager
             Save["SelectedInverse"] = false;
             Save["SelectedReapers"] = false;
             Save["SelectedGoldenEggs"] = false;
+            Save["SelectedBGMSave"] = false;
+            Save["SelectedBGMMod"] = "Normal";
             Save["SelectedMaxWeapons"] = 6;
             Save["itemInCollection"] = 0;
             Save["itemInUnlocks"] = 0;
@@ -333,20 +355,20 @@ namespace VSSaveManager
             Save["RunCoins"] = 0;
             Save["RunEnemies"] = 0;
             Save["RunPickups"] = JArray.FromObject(new string[]
-                {
+            {
 
-                });
+            });
             Save["LifetimeCoins"] = 0;
             Save["RunPickups_Coins"] = 0;
             Save["OwO"] = 0;
             Save["CompletedHurries"] = 0;
             Save["HasKilledTheFinalBoss"] = false;
             Save["HasSeenFinalFireworks"] = false;
-            Save["ShowPickups"] = false;
-            Save["ShowSmallMapIcons"] = false;
             Save["LongestFever"] = 0;
             Save["HighestFever"] = 0;
+            Save["PlayedRNJ"] = 0;
             {
+                string[] BoughtCharacters = Save["BoughtCharacters"].Values<string>().ToArray();
                 List<string> Characters = new List<string>();
                 if (BuyBackCharacters)
                 {
@@ -361,21 +383,37 @@ namespace VSSaveManager
                 }
                 if (newGamePlusCharacterComboBox.SelectedIndex > 0)
                 {
-                    Characters.Add(Save["BoughtCharacters"].Values<string>().ToArray()[newGamePlusCharacterComboBox.SelectedIndex - 1]);
+                    Characters.Add(BoughtCharacters[NgPlusCharactersIndex[newGamePlusCharacterComboBox.SelectedIndex - 1]]);
                 }
                 if (newGamePlusCharacterComboBox2.SelectedIndex > 0 && newGamePlusCharacterComboBox2.Enabled)
                 {
-                    Characters.Add(Save["BoughtCharacters"].Values<string>().ToArray()[newGamePlusCharacterComboBox2.SelectedIndex - 1]);
+                    Characters.Add(BoughtCharacters[NgPlusCharactersIndex[newGamePlusCharacterComboBox2.SelectedIndex - 1]]);
                 }
                 if (newGamePlusCharacterComboBox3.SelectedIndex > 0 && newGamePlusCharacterComboBox3.Enabled)
                 {
-                    Characters.Add(Save["BoughtCharacters"].Values<string>().ToArray()[newGamePlusCharacterComboBox3.SelectedIndex - 1]);
+                    Characters.Add(BoughtCharacters[NgPlusCharactersIndex[newGamePlusCharacterComboBox3.SelectedIndex - 1]]);
                 }
                 if (newGamePlusCharacterComboBox4.SelectedIndex > 0 && newGamePlusCharacterComboBox4.Enabled)
                 {
-                    Characters.Add(Save["BoughtCharacters"].Values<string>().ToArray()[newGamePlusCharacterComboBox4.SelectedIndex - 1]);
+                    Characters.Add(BoughtCharacters[NgPlusCharactersIndex[newGamePlusCharacterComboBox4.SelectedIndex - 1]]);
                 }
                 Save["BoughtCharacters"] = JArray.FromObject(Characters.ToArray());
+                Save["UnlockedCharacters"] = JArray.FromObject(Characters.ToArray());
+                /*if (BuyBackCharacters)
+                {
+                    Save["UnlockedCharacters"] = JArray.FromObject(new string[]
+                        {
+                        "IMELDA",
+                        "PASQUALINA",
+                        "GENNARO"
+                        });
+                }
+                else
+                {
+                    Save["UnlockedCharacters"] = JArray.FromObject(new string[]
+                        {
+                        });
+                }*/
                 Characters.Clear();
             }
             Save["BoughtPowerups"] = JArray.FromObject(new string[]
@@ -400,21 +438,6 @@ namespace VSSaveManager
             Save["UnlockedWeapons"] = JArray.FromObject(new string[]
                 {
                 });
-            if (BuyBackCharacters)
-            {
-                Save["UnlockedCharacters"] = JArray.FromObject(new string[]
-                    {
-                        "IMELDA",
-                        "PASQUALINA",
-                        "GENNARO"
-                    });
-            }
-            else
-            {
-                Save["UnlockedCharacters"] = JArray.FromObject(new string[]
-                    {
-                    });
-            }
             {
                 if (!noArtifactsCheck.Checked)
                 {
@@ -436,9 +459,13 @@ namespace VSSaveManager
                         HandyArray.Add("RELIC_SECRETS");
                     if (ItemsArray.Contains("RELIC_BANGER"))
                         HandyArray.Add("RELIC_BANGER");
-                    if (ItemsArray.Contains("RELIC_TRISECTION"))
-                        HandyArray.Add("RELIC_TRISECTION");
                 }
+                if (rouletteActiveCheckBox.Checked)
+                    HandyArray.Add("RELIC_TRISECTION");
+                if (adventureUnlockCheckbox.Checked)
+                    HandyArray.Add("RELIC_ATLAS");
+                if (randomLevelUpCheckBox.Checked)
+                    HandyArray.Add("RELIC_BRAVESTORY");
                 Save["CollectedItems"] = JArray.FromObject(HandyArray.ToArray());
                 HandyArray.Clear();
             }
@@ -480,6 +507,9 @@ namespace VSSaveManager
             Save["EggData"] = JObject.Parse("{}");
             Save["SealedItems"] = JArray.FromObject(new string[] { });
             Save["SealedWeapons"] = JArray.FromObject(new string[] { });
+            Save["SelectedRandomEvents"] = false;
+            Save["SelectedRandomLevels"] = false;
+            Save["HasSeenAdventureReveal"] = false;
             UpdateInformation(CurrentSaveFile);
         }
 
