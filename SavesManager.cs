@@ -111,7 +111,28 @@ namespace VSSaveManager
             AddCharacterName("CTRPCAKE", "Sammy");
             AddCharacterName("GHOUL", "Rottin'Ghoul");
             // Emergency Meeting
-
+            AddCharacterName("C1_CREWMATE", "Crewmate Dino");
+            AddCharacterName("C1_ENGINEER", "Engineer Gino");
+            AddCharacterName("C1_GHOST", "Ghost Lino");
+            AddCharacterName("C1_SHAPESHIFTER", "Shapeshifter Nino");
+            AddCharacterName("C1_GUARDIAN", "Guardian Pina");
+            AddCharacterName("C1_IMPOSTOR", "Impostor Rina");
+            AddCharacterName("C1_SCIENTIST", "Scientist Mina");
+            AddCharacterName("C1_HORSE", "Horse");
+            AddCharacterName("C1_MEGAIMPOSTOR", "Megalo Impostor Rina");
+            // Operation Guns
+            AddCharacterName("FB_BILLRIZER", "Bill Rizer");
+            AddCharacterName("FB_LANCE", "Lance Bean");
+            AddCharacterName("FB_ARIANA", "Ariana");
+            AddCharacterName("FB_LUCIA", "Lucia Zero");
+            AddCharacterName("FB_BRADFANG", "Brad Fang");
+            AddCharacterName("FB_BROWNY", "Browny");
+            AddCharacterName("FB_SHEENA", "Sheena Etranzi");
+            AddCharacterName("FB_PROBO", "Probotector");
+            AddCharacterName("FB_STANLEY", "Stanley");
+            AddCharacterName("FB_NEWT", "Newt Plissken");
+            AddCharacterName("FB_COLONEL", "Colonel Bahamut");
+            AddCharacterName("FB_SIMONDO", "Simondo Belmont");
         }
 
         void PopulateStageList()
@@ -358,6 +379,8 @@ namespace VSSaveManager
             {
 
             });
+            Save["LifetimeSurvived"] = 0;
+            Save["LifetimeHeal"] = 0;
             Save["LifetimeCoins"] = 0;
             Save["RunPickups_Coins"] = 0;
             Save["OwO"] = 0;
@@ -367,6 +390,11 @@ namespace VSSaveManager
             Save["LongestFever"] = 0;
             Save["HighestFever"] = 0;
             Save["PlayedRNJ"] = 0;
+            Save["TopLapsCarlo"] = 0;
+            Save["TotalLapsCarlo"] = 0;
+            Save["TopLapsHighway"] = 0;
+            Save["TotalLapsHighway"] = 0;
+            Save["TrainHazardEnemiesHit"] = 0;
             {
                 string[] BoughtCharacters = Save["BoughtCharacters"].Values<string>().ToArray();
                 List<string> Characters = new List<string>();
@@ -489,6 +517,10 @@ namespace VSSaveManager
             {
 
             });
+            Save["OpenedCoffins"] = JArray.FromObject(new string[]
+            {
+
+            });
             {
                 List<int> HandyIntArray = new List<int>();
                 if (unlockGameKillerCheck.Checked)
@@ -510,6 +542,7 @@ namespace VSSaveManager
             Save["SelectedRandomEvents"] = false;
             Save["SelectedRandomLevels"] = false;
             Save["HasSeenAdventureReveal"] = false;
+            Save["HasPlayedStage3"] = false;
             UpdateInformation(CurrentSaveFile);
         }
 
