@@ -54,6 +54,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.randomLevelUpCheckBox = new System.Windows.Forms.CheckBox();
+            this.adventureUnlockCheckbox = new System.Windows.Forms.CheckBox();
             this.newGamePlusCharacterComboBox4 = new System.Windows.Forms.ComboBox();
             this.newGamePlusCharacterComboBox3 = new System.Windows.Forms.ComboBox();
             this.newGamePlusCharacterComboBox2 = new System.Windows.Forms.ComboBox();
@@ -74,8 +76,9 @@
             this.openSaveFolderbtn = new System.Windows.Forms.Button();
             this.newprofilebtn = new System.Windows.Forms.Button();
             this.saveprofilebtn = new System.Windows.Forms.Button();
-            this.adventureUnlockCheckbox = new System.Windows.Forms.CheckBox();
-            this.randomLevelUpCheckBox = new System.Windows.Forms.CheckBox();
+            this.darkanaUnlockCheck = new System.Windows.Forms.CheckBox();
+            this.adventureProgressKeepCheck = new System.Windows.Forms.CheckBox();
+            this.keepGoldenEggsCheck = new System.Windows.Forms.CheckBox();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -328,6 +331,9 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.keepGoldenEggsCheck);
+            this.tabPage3.Controls.Add(this.adventureProgressKeepCheck);
+            this.tabPage3.Controls.Add(this.darkanaUnlockCheck);
             this.tabPage3.Controls.Add(this.randomLevelUpCheckBox);
             this.tabPage3.Controls.Add(this.adventureUnlockCheckbox);
             this.tabPage3.Controls.Add(this.newGamePlusCharacterComboBox4);
@@ -351,6 +357,26 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "New Game Plus";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // randomLevelUpCheckBox
+            // 
+            this.randomLevelUpCheckBox.AutoSize = true;
+            this.randomLevelUpCheckBox.Location = new System.Drawing.Point(230, 127);
+            this.randomLevelUpCheckBox.Name = "randomLevelUpCheckBox";
+            this.randomLevelUpCheckBox.Size = new System.Drawing.Size(112, 30);
+            this.randomLevelUpCheckBox.TabIndex = 16;
+            this.randomLevelUpCheckBox.Text = "Random Level Up\r\nUnlocked?";
+            this.randomLevelUpCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // adventureUnlockCheckbox
+            // 
+            this.adventureUnlockCheckbox.AutoSize = true;
+            this.adventureUnlockCheckbox.Location = new System.Drawing.Point(230, 109);
+            this.adventureUnlockCheckbox.Name = "adventureUnlockCheckbox";
+            this.adventureUnlockCheckbox.Size = new System.Drawing.Size(135, 17);
+            this.adventureUnlockCheckbox.TabIndex = 15;
+            this.adventureUnlockCheckbox.Text = "Adventures Unlocked?";
+            this.adventureUnlockCheckbox.UseVisualStyleBackColor = true;
             // 
             // newGamePlusCharacterComboBox4
             // 
@@ -396,27 +422,27 @@
             // rouletteActiveCheckBox
             // 
             this.rouletteActiveCheckBox.AutoSize = true;
-            this.rouletteActiveCheckBox.Location = new System.Drawing.Point(232, 140);
+            this.rouletteActiveCheckBox.Location = new System.Drawing.Point(230, 77);
             this.rouletteActiveCheckBox.Name = "rouletteActiveCheckBox";
-            this.rouletteActiveCheckBox.Size = new System.Drawing.Size(141, 17);
+            this.rouletteActiveCheckBox.Size = new System.Drawing.Size(102, 30);
             this.rouletteActiveCheckBox.TabIndex = 10;
-            this.rouletteActiveCheckBox.Text = "Random Events Active?";
+            this.rouletteActiveCheckBox.Text = "Random Events\r\nActive?";
             this.rouletteActiveCheckBox.UseVisualStyleBackColor = true;
             // 
             // removeProgressionArtsCheck
             // 
             this.removeProgressionArtsCheck.AutoSize = true;
-            this.removeProgressionArtsCheck.Location = new System.Drawing.Point(232, 113);
+            this.removeProgressionArtsCheck.Location = new System.Drawing.Point(230, 50);
             this.removeProgressionArtsCheck.Name = "removeProgressionArtsCheck";
-            this.removeProgressionArtsCheck.Size = new System.Drawing.Size(165, 17);
+            this.removeProgressionArtsCheck.Size = new System.Drawing.Size(124, 30);
             this.removeProgressionArtsCheck.TabIndex = 9;
-            this.removeProgressionArtsCheck.Text = "Remove Progression Artifacts";
+            this.removeProgressionArtsCheck.Text = "Remove Progression\r\nArtifacts";
             this.removeProgressionArtsCheck.UseVisualStyleBackColor = true;
             // 
             // noArtifactsCheck
             // 
             this.noArtifactsCheck.AutoSize = true;
-            this.noArtifactsCheck.Location = new System.Drawing.Point(364, 84);
+            this.noArtifactsCheck.Location = new System.Drawing.Point(362, 30);
             this.noArtifactsCheck.Name = "noArtifactsCheck";
             this.noArtifactsCheck.Size = new System.Drawing.Size(120, 17);
             this.noArtifactsCheck.TabIndex = 8;
@@ -426,7 +452,7 @@
             // arcanaUnlockCheck
             // 
             this.arcanaUnlockCheck.AutoSize = true;
-            this.arcanaUnlockCheck.Location = new System.Drawing.Point(232, 84);
+            this.arcanaUnlockCheck.Location = new System.Drawing.Point(230, 30);
             this.arcanaUnlockCheck.Name = "arcanaUnlockCheck";
             this.arcanaUnlockCheck.Size = new System.Drawing.Size(120, 17);
             this.arcanaUnlockCheck.TabIndex = 7;
@@ -436,7 +462,7 @@
             // buyStartersCheck
             // 
             this.buyStartersCheck.AutoSize = true;
-            this.buyStartersCheck.Location = new System.Drawing.Point(364, 57);
+            this.buyStartersCheck.Location = new System.Drawing.Point(362, 3);
             this.buyStartersCheck.Name = "buyStartersCheck";
             this.buyStartersCheck.Size = new System.Drawing.Size(127, 17);
             this.buyStartersCheck.TabIndex = 6;
@@ -447,7 +473,7 @@
             // unlockGameKillerCheck
             // 
             this.unlockGameKillerCheck.AutoSize = true;
-            this.unlockGameKillerCheck.Location = new System.Drawing.Point(232, 57);
+            this.unlockGameKillerCheck.Location = new System.Drawing.Point(230, 3);
             this.unlockGameKillerCheck.Name = "unlockGameKillerCheck";
             this.unlockGameKillerCheck.Size = new System.Drawing.Size(134, 17);
             this.unlockGameKillerCheck.TabIndex = 5;
@@ -554,25 +580,37 @@
             this.saveprofilebtn.UseVisualStyleBackColor = true;
             this.saveprofilebtn.Click += new System.EventHandler(this.saveprofilebtn_Click);
             // 
-            // adventureUnlockCheckbox
+            // darkanaUnlockCheck
             // 
-            this.adventureUnlockCheckbox.AutoSize = true;
-            this.adventureUnlockCheckbox.Location = new System.Drawing.Point(232, 163);
-            this.adventureUnlockCheckbox.Name = "adventureUnlockCheckbox";
-            this.adventureUnlockCheckbox.Size = new System.Drawing.Size(135, 17);
-            this.adventureUnlockCheckbox.TabIndex = 15;
-            this.adventureUnlockCheckbox.Text = "Adventures Unlocked?";
-            this.adventureUnlockCheckbox.UseVisualStyleBackColor = true;
+            this.darkanaUnlockCheck.AutoSize = true;
+            this.darkanaUnlockCheck.Location = new System.Drawing.Point(362, 53);
+            this.darkanaUnlockCheck.Name = "darkanaUnlockCheck";
+            this.darkanaUnlockCheck.Size = new System.Drawing.Size(127, 17);
+            this.darkanaUnlockCheck.TabIndex = 17;
+            this.darkanaUnlockCheck.Text = "Unlocked Darkanas?";
+            this.darkanaUnlockCheck.UseVisualStyleBackColor = true;
             // 
-            // randomLevelUpCheckBox
+            // adventureProgressKeepCheck
             // 
-            this.randomLevelUpCheckBox.AutoSize = true;
-            this.randomLevelUpCheckBox.Location = new System.Drawing.Point(231, 186);
-            this.randomLevelUpCheckBox.Name = "randomLevelUpCheckBox";
-            this.randomLevelUpCheckBox.Size = new System.Drawing.Size(167, 17);
-            this.randomLevelUpCheckBox.TabIndex = 16;
-            this.randomLevelUpCheckBox.Text = "Random Level Up Unlocked?";
-            this.randomLevelUpCheckBox.UseVisualStyleBackColor = true;
+            this.adventureProgressKeepCheck.AutoSize = true;
+            this.adventureProgressKeepCheck.Checked = true;
+            this.adventureProgressKeepCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.adventureProgressKeepCheck.Location = new System.Drawing.Point(362, 73);
+            this.adventureProgressKeepCheck.Name = "adventureProgressKeepCheck";
+            this.adventureProgressKeepCheck.Size = new System.Drawing.Size(103, 30);
+            this.adventureProgressKeepCheck.TabIndex = 18;
+            this.adventureProgressKeepCheck.Text = "Keep Adventure\r\nProgress?";
+            this.adventureProgressKeepCheck.UseVisualStyleBackColor = true;
+            // 
+            // keepGoldenEggsCheck
+            // 
+            this.keepGoldenEggsCheck.AutoSize = true;
+            this.keepGoldenEggsCheck.Location = new System.Drawing.Point(362, 109);
+            this.keepGoldenEggsCheck.Name = "keepGoldenEggsCheck";
+            this.keepGoldenEggsCheck.Size = new System.Drawing.Size(121, 17);
+            this.keepGoldenEggsCheck.TabIndex = 19;
+            this.keepGoldenEggsCheck.Text = "Keep Golden Eggs?";
+            this.keepGoldenEggsCheck.UseVisualStyleBackColor = true;
             // 
             // SavesManager
             // 
@@ -646,6 +684,9 @@
         private System.Windows.Forms.ComboBox newGamePlusCharacterComboBox2;
         private System.Windows.Forms.CheckBox adventureUnlockCheckbox;
         private System.Windows.Forms.CheckBox randomLevelUpCheckBox;
+        private System.Windows.Forms.CheckBox darkanaUnlockCheck;
+        private System.Windows.Forms.CheckBox adventureProgressKeepCheck;
+        private System.Windows.Forms.CheckBox keepGoldenEggsCheck;
     }
 }
 

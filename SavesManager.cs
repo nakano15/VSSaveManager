@@ -334,19 +334,22 @@ namespace VSSaveManager
             newGamePlusCharacterComboBox3.Enabled = false;
             newGamePlusCharacterComboBox4.Enabled = false;
             startNewGamePlusbtn.Enabled = NgPlusAble;
-            bool HasTrisection = false, HasAtlas = false, HasRandomLevelUp = false;
+            bool HasTrisection = false, HasAtlas = false, HasRandomLevelUp = false, HasArcana = false, HasDarkana = false;
             foreach(string relic in CurrentSaveFile.SaveObject["CollectedItems"].Values<string>().ToArray())
             {
                 if (relic == "RELIC_TRISECTION") HasTrisection = true;
                 if (relic == "RELIC_ATLAS") HasAtlas = true;
                 if (relic == "RELIC_BRAVESTORY") HasRandomLevelUp = true;
+                if (relic == "RELIC_RANDOMAZZO") HasArcana = true;
+                if (relic == "RELIC_DARKASSO") HasDarkana = true;
             }
             rouletteActiveCheckBox.Enabled = HasTrisection;
             rouletteActiveCheckBox.Checked = HasTrisection && CurrentSaveFile.SaveObject["SelectedRandomEvents"].Value<bool>();
-            adventureUnlockCheckbox.Enabled = HasAtlas;
-            adventureUnlockCheckbox.Checked = HasAtlas;
+            adventureUnlockCheckbox.Enabled = adventureUnlockCheckbox.Checked = HasAtlas;
             randomLevelUpCheckBox.Enabled = HasRandomLevelUp;
             randomLevelUpCheckBox.Checked = HasRandomLevelUp && CurrentSaveFile.SaveObject["SelectedRandomLevels"].Value<bool>();
+            arcanaUnlockCheck.Enabled = arcanaUnlockCheck.Checked = HasArcana;
+            darkanaUnlockCheck.Enabled = darkanaUnlockCheck.Checked = HasDarkana;
         }
 
         private void StartNewGamePlus()
@@ -466,6 +469,13 @@ namespace VSSaveManager
             Save["UnlockedWeapons"] = JArray.FromObject(new string[]
                 {
                 });
+            Save["SelectedSkins"] = JObject.Parse("{}");
+            Save["UnlockedSkins"] = JObject.Parse("{}");
+            Save["UnlockedSkinsV2"] = JObject.Parse("{}");
+            Save["SelectedSkinsV2"] = JObject.Parse("{}");
+            Save["BoughtSkins"] = JArray.FromObject(new string[]
+                {
+                });
             {
                 if (!noArtifactsCheck.Checked)
                 {
@@ -480,6 +490,8 @@ namespace VSSaveManager
                             HandyArray.Add("RELIC_MAP");
                         if (arcanaUnlockCheck.Checked && ItemsArray.Contains("RELIC_RANDOMAZZO"))
                             HandyArray.Add("RELIC_RANDOMAZZO");
+                        if (darkanaUnlockCheck.Checked && ItemsArray.Contains("RELIC_DARKASSO"))
+                            HandyArray.Add("RELIC_DARKASSO");
                     }
                     if (ItemsArray.Contains("RELIC_NOSEGLASSES"))
                         HandyArray.Add("RELIC_NOSEGLASSES");
@@ -536,13 +548,28 @@ namespace VSSaveManager
             Save["CharacterStageData"] = JObject.Parse("{}");
             Save["CharacterEnemiesKilled"] = JObject.Parse("{}");
             Save["CharacterSurvivedMinutes"] = JObject.Parse("{}");
-            Save["EggData"] = JObject.Parse("{}");
+            Save["MusicSelectionPerStage"] = JObject.Parse("{}");
+            if (!keepGoldenEggsCheck.Checked)
+                Save["EggData"] = JObject.Parse("{}");
             Save["SealedItems"] = JArray.FromObject(new string[] { });
             Save["SealedWeapons"] = JArray.FromObject(new string[] { });
             Save["SelectedRandomEvents"] = false;
             Save["SelectedRandomLevels"] = false;
             Save["HasSeenAdventureReveal"] = false;
             Save["HasPlayedStage3"] = false;
+            Save["HasSeenDarkanaTransition"] = false;
+            if (!adventureProgressKeepCheck.Checked)
+            {
+                Save["AdventureProgress"] = JArray.FromObject(new string[] { });
+                Save["AdventuresSaveData"] = JObject.Parse("{}");
+                Save["AdventureCompletionCount"] = 0;
+                Save["TotalAdventurePlaytime"] = 0;
+                Save["AllTimeAdventurePlaytime"] = 0;
+                Save["AscensionPointsAllocation"] = JObject.Parse("{}");
+                Save["AdventureStars"] = 0;
+                Save["CompletedAdventures"] = JArray.FromObject(new string[] { });
+                Save["SeenAscensionPopups"] = JArray.FromObject(new string[] { });
+            }
             UpdateInformation(CurrentSaveFile);
         }
 

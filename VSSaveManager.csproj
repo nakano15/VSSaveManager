@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>VSSaveManager</RootNamespace>
     <AssemblyName>VSSaveManager</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -142,7 +142,6 @@
   <ItemGroup>
     <Content Include="changelog.txt" />
     <Content Include="Newtonsoft.Json.dll" />
-    <Content Include="Newtonsoft.Json.pdb" />
     <Content Include="Newtonsoft.Json.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
