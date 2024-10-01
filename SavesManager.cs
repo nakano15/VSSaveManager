@@ -92,6 +92,10 @@ namespace VSSaveManager
             AddCharacterName("SHEMOONITA", "She-Moon Eeta");
             AddCharacterName("SPACEDUDE", "Space Dude");
             AddCharacterName("TUPU", "Bat Robbert");
+            AddCharacterName("SANTA", "Santa Ladonna");
+            AddCharacterName("BATSBATSBATS", "Bats Bats Bats");
+            AddCharacterName("ROSE", "Rose De Infernas");
+            AddCharacterName("GYORUNTIN", "Gyoruntin");
             //Moonspell
             AddCharacterName("MIANG", "Miang Moonspell");
             AddCharacterName("MENYA", "Menya Moonspell");
@@ -148,10 +152,11 @@ namespace VSSaveManager
             AddStageName("MOONSPELL", "Mt. Moonspell");
             AddStageName("RASH", "Boss Rash");
             AddStageName("SINKING", "Moongolow");
-            AddStageName("STAGEX", "");
+            //AddStageName("STAGEX", ""); //Unknown
             AddStageName("TOWER", "Gallo Tower");
             AddStageName("TOWERBRIDGE", "Tiny Bridge");
-            AddStageName("WAREHOUSE", "");
+            //AddStageName("WAREHOUSE", ""); //Unknown
+            //Foscari
             AddStageName("FOSCARI", "Lake Foscari");
             AddStageName("FOSCARI2", "Abyss Foscari");
         }
