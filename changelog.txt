@@ -1,5 +1,1 @@
-﻿* Fixed issue where the program would get the wrong character for new game plus.
-* You can now toggle wether you want adventures unlocked since start or not.
-*- This option will only be enabled if you actually have unlocked Adventure.
-* Random Events can now be toggled on/off regardless of wether you set to disable all artifacts or not.
-* Added a option to enable Random Level up if you have that unlocked previously.
+﻿

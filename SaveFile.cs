@@ -56,11 +56,14 @@ namespace VSSaveManager
 
         public void UpdateChecksum()
         {
-            return; //Disabled for now.
             SaveObject["checksum"] = "";
+            return; //Disabled for now.
             using (SHA256 crypto = SHA256.Create())
             {
-                string Json = SaveObject.ToString();
+                byte[] bytes = Encoding.Unicode.GetBytes(SaveObject.ToString());
+                byte[] NewHashByte = crypto.ComputeHash(bytes);
+                SaveObject["checksum"] = BitConverter.ToString(NewHashByte).Replace("-", "").ToLower();
+                /*string Json = SaveObject.ToString();
                 using (MemoryStream stream = new MemoryStream())
                 {
                     using (BinaryWriter writer = new BinaryWriter(stream))
@@ -69,7 +72,7 @@ namespace VSSaveManager
                         byte[] NewHashByte = crypto.ComputeHash(stream);
                         SaveObject["checksum"] = BitConverter.ToString(NewHashByte).Replace("-", "").ToLower();
                     }
-                }
+                }*/
                 /*string NewHash = "";
                 foreach(byte b in NewHashByte)
                 {
