@@ -94,7 +94,7 @@ namespace VSSaveManager
             {
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
-                    writer.Write(save.GetJsonString());
+                    writer.Write(save.Minify());
                 }
             }
         }
@@ -122,7 +122,7 @@ namespace VSSaveManager
         private static string LoadJsonFile(string Path)
         {
             string Text = "";
-            using (StreamReader stream = new StreamReader(Path))
+            using (StreamReader stream = new StreamReader(Path, Encoding.UTF8))
             {
                 Text = stream.ReadToEnd();
             }

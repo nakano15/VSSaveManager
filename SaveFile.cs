@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Runtime.Serialization;
 
 namespace VSSaveManager
 {
@@ -56,13 +57,31 @@ namespace VSSaveManager
 
         public void UpdateChecksum()
         {
+            foreach (var sObject in SaveObject)
+            {
+                string name = sObject.Key;
+                JToken value = sObject.Value;
+                if (name == "saveDate")
+                {
+                } else {
+                    if(value.Type == JTokenType.Float)
+                    {
+                        string a = ((string)value) as string;
+                        if (a.Split('.')[0].Length > 7)
+                        {
+                            value = ((float)value).ToString("E08");
+                        }
+                        SaveObject[name] = value;
+                    }
+                }
+            }
             SaveObject["checksum"] = "";
-            return; //Disabled for now.
             using (SHA256 crypto = SHA256.Create())
             {
-                byte[] bytes = Encoding.Unicode.GetBytes(SaveObject.ToString());
+                byte[] bytes = Encoding.UTF8.GetBytes(Minify());
                 byte[] NewHashByte = crypto.ComputeHash(bytes);
                 SaveObject["checksum"] = BitConverter.ToString(NewHashByte).Replace("-", "").ToLower();
+                
                 /*string Json = SaveObject.ToString();
                 using (MemoryStream stream = new MemoryStream())
                 {
@@ -85,6 +104,10 @@ namespace VSSaveManager
         public string GetJsonString()
         {
             return SaveObject.ToString().Replace("\"checksum\": \"", "\"checksum\":\"");
+        }
+        public string Minify()
+        {
+            return JsonConvert.SerializeObject(SaveObject);
         }
     }
 }
