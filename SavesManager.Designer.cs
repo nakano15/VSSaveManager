@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.saveInfoTab = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.saveStoryBox = new System.Windows.Forms.RichTextBox();
             this.goldBox = new System.Windows.Forms.TextBox();
@@ -37,7 +37,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.characterNameBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.saveProgressTab = new System.Windows.Forms.TabPage();
             this.unlockedStagesList = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
             this.achievementsList = new System.Windows.Forms.ListBox();
@@ -53,7 +53,10 @@
             this.characterList = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.newGamePlusTab = new System.Windows.Forms.TabPage();
+            this.keepGoldenEggsCheck = new System.Windows.Forms.CheckBox();
+            this.adventureProgressKeepCheck = new System.Windows.Forms.CheckBox();
+            this.darkanaUnlockCheck = new System.Windows.Forms.CheckBox();
             this.randomLevelUpCheckBox = new System.Windows.Forms.CheckBox();
             this.adventureUnlockCheckbox = new System.Windows.Forms.CheckBox();
             this.newGamePlusCharacterComboBox4 = new System.Windows.Forms.ComboBox();
@@ -76,33 +79,36 @@
             this.openSaveFolderbtn = new System.Windows.Forms.Button();
             this.newprofilebtn = new System.Windows.Forms.Button();
             this.saveprofilebtn = new System.Windows.Forms.Button();
-            this.darkanaUnlockCheck = new System.Windows.Forms.CheckBox();
-            this.adventureProgressKeepCheck = new System.Windows.Forms.CheckBox();
-            this.keepGoldenEggsCheck = new System.Windows.Forms.CheckBox();
-            this.tabPage2.SuspendLayout();
+            this.aboutTab = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.saveInfoTab.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.saveProgressTab.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.newGamePlusTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.aboutTab.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabPage2
+            // saveInfoTab
             // 
-            this.tabPage2.Controls.Add(this.groupBox2);
-            this.tabPage2.Controls.Add(this.goldBox);
-            this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.lastMapNameBox);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.characterNameBox);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(504, 363);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Save Information";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.saveInfoTab.Controls.Add(this.groupBox2);
+            this.saveInfoTab.Controls.Add(this.goldBox);
+            this.saveInfoTab.Controls.Add(this.label1);
+            this.saveInfoTab.Controls.Add(this.lastMapNameBox);
+            this.saveInfoTab.Controls.Add(this.label10);
+            this.saveInfoTab.Controls.Add(this.characterNameBox);
+            this.saveInfoTab.Controls.Add(this.label9);
+            this.saveInfoTab.Location = new System.Drawing.Point(4, 22);
+            this.saveInfoTab.Name = "saveInfoTab";
+            this.saveInfoTab.Padding = new System.Windows.Forms.Padding(3);
+            this.saveInfoTab.Size = new System.Drawing.Size(504, 363);
+            this.saveInfoTab.TabIndex = 1;
+            this.saveInfoTab.Text = "Save Information";
+            this.saveInfoTab.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -175,29 +181,29 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Last Character";
             // 
-            // tabPage1
+            // saveProgressTab
             // 
-            this.tabPage1.Controls.Add(this.unlockedStagesList);
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.achievementsList);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.secretsList);
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.stagesList);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.weaponsList);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.powerUpsList);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.characterList);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(504, 363);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Save Progress";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.saveProgressTab.Controls.Add(this.unlockedStagesList);
+            this.saveProgressTab.Controls.Add(this.label8);
+            this.saveProgressTab.Controls.Add(this.achievementsList);
+            this.saveProgressTab.Controls.Add(this.label7);
+            this.saveProgressTab.Controls.Add(this.secretsList);
+            this.saveProgressTab.Controls.Add(this.label6);
+            this.saveProgressTab.Controls.Add(this.stagesList);
+            this.saveProgressTab.Controls.Add(this.label5);
+            this.saveProgressTab.Controls.Add(this.weaponsList);
+            this.saveProgressTab.Controls.Add(this.label4);
+            this.saveProgressTab.Controls.Add(this.powerUpsList);
+            this.saveProgressTab.Controls.Add(this.label3);
+            this.saveProgressTab.Controls.Add(this.characterList);
+            this.saveProgressTab.Controls.Add(this.label2);
+            this.saveProgressTab.Location = new System.Drawing.Point(4, 22);
+            this.saveProgressTab.Name = "saveProgressTab";
+            this.saveProgressTab.Padding = new System.Windows.Forms.Padding(3);
+            this.saveProgressTab.Size = new System.Drawing.Size(504, 363);
+            this.saveProgressTab.TabIndex = 0;
+            this.saveProgressTab.Text = "Save Progress";
+            this.saveProgressTab.UseVisualStyleBackColor = true;
             // 
             // unlockedStagesList
             // 
@@ -320,43 +326,76 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.saveInfoTab);
+            this.tabControl1.Controls.Add(this.saveProgressTab);
+            this.tabControl1.Controls.Add(this.newGamePlusTab);
+            this.tabControl1.Controls.Add(this.aboutTab);
             this.tabControl1.Location = new System.Drawing.Point(12, 59);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(512, 389);
             this.tabControl1.TabIndex = 1;
             // 
-            // tabPage3
+            // newGamePlusTab
             // 
-            this.tabPage3.Controls.Add(this.keepGoldenEggsCheck);
-            this.tabPage3.Controls.Add(this.adventureProgressKeepCheck);
-            this.tabPage3.Controls.Add(this.darkanaUnlockCheck);
-            this.tabPage3.Controls.Add(this.randomLevelUpCheckBox);
-            this.tabPage3.Controls.Add(this.adventureUnlockCheckbox);
-            this.tabPage3.Controls.Add(this.newGamePlusCharacterComboBox4);
-            this.tabPage3.Controls.Add(this.newGamePlusCharacterComboBox3);
-            this.tabPage3.Controls.Add(this.newGamePlusCharacterComboBox2);
-            this.tabPage3.Controls.Add(this.ngplusnotificationtext);
-            this.tabPage3.Controls.Add(this.rouletteActiveCheckBox);
-            this.tabPage3.Controls.Add(this.removeProgressionArtsCheck);
-            this.tabPage3.Controls.Add(this.noArtifactsCheck);
-            this.tabPage3.Controls.Add(this.arcanaUnlockCheck);
-            this.tabPage3.Controls.Add(this.buyStartersCheck);
-            this.tabPage3.Controls.Add(this.unlockGameKillerCheck);
-            this.tabPage3.Controls.Add(this.startNewGamePlusbtn);
-            this.tabPage3.Controls.Add(this.newGamePlusCharacterComboBox);
-            this.tabPage3.Controls.Add(this.label12);
-            this.tabPage3.Controls.Add(this.ngpluselligibilitybox);
-            this.tabPage3.Controls.Add(this.label11);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(504, 363);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "New Game Plus";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.newGamePlusTab.Controls.Add(this.keepGoldenEggsCheck);
+            this.newGamePlusTab.Controls.Add(this.adventureProgressKeepCheck);
+            this.newGamePlusTab.Controls.Add(this.darkanaUnlockCheck);
+            this.newGamePlusTab.Controls.Add(this.randomLevelUpCheckBox);
+            this.newGamePlusTab.Controls.Add(this.adventureUnlockCheckbox);
+            this.newGamePlusTab.Controls.Add(this.newGamePlusCharacterComboBox4);
+            this.newGamePlusTab.Controls.Add(this.newGamePlusCharacterComboBox3);
+            this.newGamePlusTab.Controls.Add(this.newGamePlusCharacterComboBox2);
+            this.newGamePlusTab.Controls.Add(this.ngplusnotificationtext);
+            this.newGamePlusTab.Controls.Add(this.rouletteActiveCheckBox);
+            this.newGamePlusTab.Controls.Add(this.removeProgressionArtsCheck);
+            this.newGamePlusTab.Controls.Add(this.noArtifactsCheck);
+            this.newGamePlusTab.Controls.Add(this.arcanaUnlockCheck);
+            this.newGamePlusTab.Controls.Add(this.buyStartersCheck);
+            this.newGamePlusTab.Controls.Add(this.unlockGameKillerCheck);
+            this.newGamePlusTab.Controls.Add(this.startNewGamePlusbtn);
+            this.newGamePlusTab.Controls.Add(this.newGamePlusCharacterComboBox);
+            this.newGamePlusTab.Controls.Add(this.label12);
+            this.newGamePlusTab.Controls.Add(this.ngpluselligibilitybox);
+            this.newGamePlusTab.Controls.Add(this.label11);
+            this.newGamePlusTab.Location = new System.Drawing.Point(4, 22);
+            this.newGamePlusTab.Name = "newGamePlusTab";
+            this.newGamePlusTab.Size = new System.Drawing.Size(504, 363);
+            this.newGamePlusTab.TabIndex = 2;
+            this.newGamePlusTab.Text = "New Game Plus";
+            this.newGamePlusTab.UseVisualStyleBackColor = true;
+            // 
+            // keepGoldenEggsCheck
+            // 
+            this.keepGoldenEggsCheck.AutoSize = true;
+            this.keepGoldenEggsCheck.Location = new System.Drawing.Point(362, 109);
+            this.keepGoldenEggsCheck.Name = "keepGoldenEggsCheck";
+            this.keepGoldenEggsCheck.Size = new System.Drawing.Size(121, 17);
+            this.keepGoldenEggsCheck.TabIndex = 19;
+            this.keepGoldenEggsCheck.Text = "Keep Golden Eggs?";
+            this.keepGoldenEggsCheck.UseVisualStyleBackColor = true;
+            // 
+            // adventureProgressKeepCheck
+            // 
+            this.adventureProgressKeepCheck.AutoSize = true;
+            this.adventureProgressKeepCheck.Checked = true;
+            this.adventureProgressKeepCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.adventureProgressKeepCheck.Location = new System.Drawing.Point(362, 73);
+            this.adventureProgressKeepCheck.Name = "adventureProgressKeepCheck";
+            this.adventureProgressKeepCheck.Size = new System.Drawing.Size(103, 30);
+            this.adventureProgressKeepCheck.TabIndex = 18;
+            this.adventureProgressKeepCheck.Text = "Keep Adventure\r\nProgress?";
+            this.adventureProgressKeepCheck.UseVisualStyleBackColor = true;
+            // 
+            // darkanaUnlockCheck
+            // 
+            this.darkanaUnlockCheck.AutoSize = true;
+            this.darkanaUnlockCheck.Location = new System.Drawing.Point(362, 53);
+            this.darkanaUnlockCheck.Name = "darkanaUnlockCheck";
+            this.darkanaUnlockCheck.Size = new System.Drawing.Size(127, 17);
+            this.darkanaUnlockCheck.TabIndex = 17;
+            this.darkanaUnlockCheck.Text = "Unlocked Darkanas?";
+            this.darkanaUnlockCheck.UseVisualStyleBackColor = true;
             // 
             // randomLevelUpCheckBox
             // 
@@ -580,37 +619,58 @@
             this.saveprofilebtn.UseVisualStyleBackColor = true;
             this.saveprofilebtn.Click += new System.EventHandler(this.saveprofilebtn_Click);
             // 
-            // darkanaUnlockCheck
+            // aboutTab
             // 
-            this.darkanaUnlockCheck.AutoSize = true;
-            this.darkanaUnlockCheck.Location = new System.Drawing.Point(362, 53);
-            this.darkanaUnlockCheck.Name = "darkanaUnlockCheck";
-            this.darkanaUnlockCheck.Size = new System.Drawing.Size(127, 17);
-            this.darkanaUnlockCheck.TabIndex = 17;
-            this.darkanaUnlockCheck.Text = "Unlocked Darkanas?";
-            this.darkanaUnlockCheck.UseVisualStyleBackColor = true;
+            this.aboutTab.Controls.Add(this.richTextBox1);
+            this.aboutTab.Controls.Add(this.label15);
+            this.aboutTab.Controls.Add(this.label14);
+            this.aboutTab.Controls.Add(this.label13);
+            this.aboutTab.Location = new System.Drawing.Point(4, 22);
+            this.aboutTab.Name = "aboutTab";
+            this.aboutTab.Size = new System.Drawing.Size(504, 363);
+            this.aboutTab.TabIndex = 3;
+            this.aboutTab.Text = "About";
+            this.aboutTab.UseVisualStyleBackColor = true;
             // 
-            // adventureProgressKeepCheck
+            // label13
             // 
-            this.adventureProgressKeepCheck.AutoSize = true;
-            this.adventureProgressKeepCheck.Checked = true;
-            this.adventureProgressKeepCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.adventureProgressKeepCheck.Location = new System.Drawing.Point(362, 73);
-            this.adventureProgressKeepCheck.Name = "adventureProgressKeepCheck";
-            this.adventureProgressKeepCheck.Size = new System.Drawing.Size(103, 30);
-            this.adventureProgressKeepCheck.TabIndex = 18;
-            this.adventureProgressKeepCheck.Text = "Keep Adventure\r\nProgress?";
-            this.adventureProgressKeepCheck.UseVisualStyleBackColor = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(3, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(488, 60);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Vampire Survivors\r\nSaves Manager";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // keepGoldenEggsCheck
+            // label14
             // 
-            this.keepGoldenEggsCheck.AutoSize = true;
-            this.keepGoldenEggsCheck.Location = new System.Drawing.Point(362, 109);
-            this.keepGoldenEggsCheck.Name = "keepGoldenEggsCheck";
-            this.keepGoldenEggsCheck.Size = new System.Drawing.Size(121, 17);
-            this.keepGoldenEggsCheck.TabIndex = 19;
-            this.keepGoldenEggsCheck.Text = "Keep Golden Eggs?";
-            this.keepGoldenEggsCheck.UseVisualStyleBackColor = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(5, 79);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(236, 30);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Developed By: Nakano15";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label15
+            // 
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(127, 119);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(252, 33);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Special Thanks To";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Location = new System.Drawing.Point(3, 167);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(498, 193);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = "Takacomic (Made the checksum script work)\nYou (For being awesome :3)";
             // 
             // SavesManager
             // 
@@ -622,22 +682,23 @@
             this.Name = "SavesManager";
             this.Text = "Saves Manager";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.saveInfoTab.ResumeLayout(false);
+            this.saveInfoTab.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.saveProgressTab.ResumeLayout(false);
+            this.saveProgressTab.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            this.newGamePlusTab.ResumeLayout(false);
+            this.newGamePlusTab.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.aboutTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage saveInfoTab;
+        private System.Windows.Forms.TabPage saveProgressTab;
         private System.Windows.Forms.ListBox unlockedStagesList;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ListBox achievementsList;
@@ -662,7 +723,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox goldBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage newGamePlusTab;
         private System.Windows.Forms.TextBox ngpluselligibilitybox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox newGamePlusCharacterComboBox;
@@ -687,6 +748,11 @@
         private System.Windows.Forms.CheckBox darkanaUnlockCheck;
         private System.Windows.Forms.CheckBox adventureProgressKeepCheck;
         private System.Windows.Forms.CheckBox keepGoldenEggsCheck;
+        private System.Windows.Forms.TabPage aboutTab;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

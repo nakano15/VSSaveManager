@@ -1,1 +1,4 @@
-﻿
+﻿No longer need third part tool to update save checksum.
+ => Thanks to Takacomic for that.
+Added an About tab.
+ => Sorry if it's corny. It's my first time making something like that.
