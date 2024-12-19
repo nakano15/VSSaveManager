@@ -18,11 +18,11 @@ namespace VSSaveManager
             Application.SetCompatibleTextRenderingDefault(false);
             VSSaveManager.Main.LoadSettingFile();
             VSSaveManager.Main.InitializeDirectories();
-            if (!VSSaveManager.Main.SavesDirectoryExist)
+            /*if (!VSSaveManager.Main.SavesDirectoryExist)
             {
                 MessageBox.Show("Saves directory doesn't exist..", "Uh oh.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }
+            }*/
             Application.Run(new SavesFolderSelection());
             if (VSSaveManager.Main.SavesDirectoryExist && VSSaveManager.Main.UserSaveFolder != "")
             {

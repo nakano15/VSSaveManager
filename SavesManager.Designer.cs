@@ -88,6 +88,7 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.familiarforgebtn = new System.Windows.Forms.CheckBox();
             this.masterlibrarionchck = new System.Windows.Forms.CheckBox();
+            this.greatestjubileechck = new System.Windows.Forms.CheckBox();
             this.saveInfoTab.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.saveProgressTab.SuspendLayout();
@@ -697,6 +698,7 @@
             this.flowLayoutPanel1.Controls.Add(this.randomLevelUpCheckBox);
             this.flowLayoutPanel1.Controls.Add(this.familiarforgebtn);
             this.flowLayoutPanel1.Controls.Add(this.masterlibrarionchck);
+            this.flowLayoutPanel1.Controls.Add(this.greatestjubileechck);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 19);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -723,6 +725,18 @@
             this.masterlibrarionchck.TabIndex = 21;
             this.masterlibrarionchck.Text = "Master Librarian Vendor Unlocked?";
             this.masterlibrarionchck.UseVisualStyleBackColor = true;
+            // 
+            // greatestjubileechck
+            // 
+            this.greatestjubileechck.AutoSize = true;
+            this.greatestjubileechck.Checked = true;
+            this.greatestjubileechck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.greatestjubileechck.Location = new System.Drawing.Point(3, 354);
+            this.greatestjubileechck.Name = "greatestjubileechck";
+            this.greatestjubileechck.Size = new System.Drawing.Size(157, 17);
+            this.greatestjubileechck.TabIndex = 22;
+            this.greatestjubileechck.Text = "Greatest Jubilee Unlocked?";
+            this.greatestjubileechck.UseVisualStyleBackColor = true;
             // 
             // SavesManager
             // 
@@ -812,6 +826,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.CheckBox familiarforgebtn;
         private System.Windows.Forms.CheckBox masterlibrarionchck;
+        private System.Windows.Forms.CheckBox greatestjubileechck;
     }
 }
 

@@ -1,2 +1,9 @@
 ﻿* Added support to Ode to Castlevania dlc characters.
 * Added new New Game Plus unlockables.
+* Fixed a bug where the last selected character would show the incorrect character name, when starting new game plus.
+* The Greatest Jubilee will now show up as a possible level up reward.
+* You can now choose wether you'll get Greatest Jubilee unlocked as level up reward from starting a New Game Plus or not.
+* Changed how loading save files work.
+*- allows better changing the save file location, in case you have other hard drives.
+*- Added support to Epic Games Store version of Vampire Survivors.
+*- Switching game version on the save file selector will also change the directory to load the save file from to the default from the game version.

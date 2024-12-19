@@ -567,6 +567,11 @@ namespace VSSaveManager
                     "JUBILEE"
                 });
             UnlockedWeapons.Add("JUBILEE");
+            if (greatestjubileechck.Checked)
+            {
+                CollectedWeapons.Add("JUBILEE");
+                UnlockedWeapons.Add("JUBILEE");
+            }
             Save["SelectedSkins"] = JObject.Parse("{}");
             Save["UnlockedSkins"] = JObject.Parse("{}");
             Save["UnlockedSkinsV2"] = JObject.Parse("{}");

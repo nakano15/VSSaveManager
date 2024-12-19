@@ -19,24 +19,25 @@ namespace VSSaveManager
 
         private void SavesFolderSelection_Load(object sender, EventArgs e)
         {
-            /*if (!Main.SavesDirectoryExist)
-            {
-                savesFolderList.Visible = false;
-                actionBtn.Text = "Close";
-                infolbl.Text = "Couldn't find Steam directory of the game.";
-            }
-            else
-            {
-                savesFolderList.Items.Clear();
-                foreach(string s in Main.FoldersFound)
-                {
-                    savesFolderList.Items.Add(s);
-                }
-                savesFolderList.SelectedIndex = 0;
-            }*/
-            directoryBox.Text = Main.SteamFolderDirectory;
+            LoadVersions();
+            UpdateDirectoryPath();
             UpdateButtonState();
             UpdateSavesList();
+        }
+
+        void UpdateDirectoryPath()
+        {
+            directoryBox.Text = Main.SaveFolderDirectory;
+        }
+
+        void LoadVersions()
+        {
+            gameverbox.Items.Clear();
+            foreach (Main.GameVersions gv in Enum.GetValues(typeof(Main.GameVersions)))
+            {
+                gameverbox.Items.Add(Main.ReturnGameVersionName(gv));
+            }
+            gameverbox.SelectedIndex = (int)Main.GameVersion;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -53,7 +54,7 @@ namespace VSSaveManager
         {
             folderBrowser.ShowDialog();
             directoryBox.Text = folderBrowser.SelectedPath;
-            Main.SteamFolderDirectory = directoryBox.Text;
+            Main.SaveFolderDirectory = directoryBox.Text;
             Main.InitializeDirectories();
             UpdateButtonState();
             UpdateSavesList();
@@ -79,6 +80,21 @@ namespace VSSaveManager
             {
                 savesFolderList.Text = "";
             }
+        }
+
+        private void folderBrowser_HelpRequest(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gameverbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Main.GameVersion = (Main.GameVersions)gameverbox.SelectedIndex;
+            Main.SetDefaultGameVersions();
+            UpdateDirectoryPath();
+            Main.InitializeDirectories();
+            UpdateButtonState();
+            UpdateSavesList();
         }
     }
 }

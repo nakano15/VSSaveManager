@@ -10,12 +10,14 @@ namespace VSSaveManager
 {
     public class Main
     {
-        internal static string SteamFolderDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) + @"\Steam";
-        internal static string GameSaveDirectory => SteamFolderDirectory + @"\userdata\";
+        internal static string SteamFolderDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) + @"\Steam\userdata";
+        internal static string EGSFolderDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Vampire_Survivors_EGS";
+        internal static string SaveFolderDirectory = SteamFolderDirectory;
         internal static string DesktopDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
         internal static string AppDataDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Vampire_Survivors_Data\";
         internal static string UserSaveFolder = "";
         internal static string[] FoldersFound = new string[0];
+        internal static GameVersions GameVersion = GameVersions.Steam;
         private static bool _SavesDirectoryExist = false;
         internal static bool SavesDirectoryExist { get { return _SavesDirectoryExist; } }
         internal static SaveFile MainSaveFile;
@@ -25,12 +27,55 @@ namespace VSSaveManager
         {
             get
             {
-                return GameSaveDirectory + UserSaveFolder + @"\1794680\remote\";
+                switch (GameVersion)
+                {
+                    case GameVersions.Steam:
+                        return SaveFolderDirectory + "\\" + UserSaveFolder + @"\1794680\remote\";
+                    case GameVersions.EGS:
+                        return SaveFolderDirectory + "\\" + UserSaveFolder + @"\";
+                }
+                return "Not Setup Game Version!!";
             }
         }
-        const string SaveFileName = "SaveData";
+        internal static string SaveFileName
+        {
+            get
+            {
+                switch (GameVersion)
+                {
+                    case GameVersions.EGS:
+                        return "SaveData.sav";
+                }
+                return "SaveData";
+            }
+        }
         internal static string LastProfile = "";
         static string SettingsFileName = Environment.CurrentDirectory + @"\settings.json";
+
+        static bool EndsWithCorrectPath(string Path)
+        {
+            switch (GameVersion)
+            {
+                case GameVersions.Steam:
+                    return Path.EndsWith("userdata");
+                case GameVersions.EGS:
+                    return Path.EndsWith("Vampire_Survivors_EGS");
+            }
+            return false;
+        }
+
+        internal static void SetDefaultGameVersions()
+        {
+            switch (GameVersion)
+            {
+                case GameVersions.Steam:
+                    SaveFolderDirectory = SteamFolderDirectory;
+                    break;
+                case GameVersions.EGS:
+                    SaveFolderDirectory = EGSFolderDirectory;
+                    break;
+            }
+        }
 
         internal static void SaveSettingFile()
         {
@@ -44,7 +89,8 @@ namespace VSSaveManager
                 {
                     JObject save = new JObject();
                     save.Add("LastProfile", LastProfile);
-                    save.Add("SaveDirectory", SteamFolderDirectory);
+                    save.Add("SaveDirectory", SaveFolderDirectory);
+                    save.Add("GameVersion", (int)GameVersion);
                     writer.Write(save.ToString());
                 }
             }
@@ -62,7 +108,9 @@ namespace VSSaveManager
                         JObject save = JObject.Parse(Code);
                         LastProfile = save["LastProfile"].Value<string>();
                         if (save.ContainsKey("SaveDirectory"))
-                            SteamFolderDirectory = save["SaveDirectory"].Value<string>();
+                            SaveFolderDirectory = save["SaveDirectory"].Value<string>();
+                        if (save.ContainsKey("GameVersion"))
+                            GameVersion = (GameVersions)save["GameVersion"].Value<int>();
                     }
                 }
             }
@@ -70,9 +118,15 @@ namespace VSSaveManager
 
         internal static void InitializeDirectories()
         {
-            if (_SavesDirectoryExist = Directory.Exists(GameSaveDirectory))
+            _SavesDirectoryExist = false;
+            FoldersFound = new string[0];
+            if (Directory.Exists(SaveFolderDirectory))
             {
-                FoldersFound = Directory.GetDirectories(GameSaveDirectory, "*", SearchOption.TopDirectoryOnly).Select(x => x.Substring(GameSaveDirectory.Length)).ToArray();
+                if (EndsWithCorrectPath(SaveFolderDirectory))
+                {
+                    _SavesDirectoryExist = true;
+                    FoldersFound = Directory.GetDirectories(SaveFolderDirectory + "\\", "*", SearchOption.TopDirectoryOnly).Select(x => x.Substring(SaveFolderDirectory.Length + 1)).ToArray();
+                }
             }
         }
 
@@ -127,6 +181,24 @@ namespace VSSaveManager
                 Text = stream.ReadToEnd();
             }
             return Text;
+        }
+
+        public static string ReturnGameVersionName(GameVersions ver)
+        {
+            switch (ver)
+            {
+                case GameVersions.Steam:
+                    return "Steam";
+                case GameVersions.EGS:
+                    return "Epic Games Store";
+            }
+            return ver.ToString();
+        }
+
+        public enum GameVersions : byte
+        {
+            Steam,
+            EGS
         }
     }
 }
