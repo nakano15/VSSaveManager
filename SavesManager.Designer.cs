@@ -74,23 +74,29 @@
             this.label12 = new System.Windows.Forms.Label();
             this.ngpluselligibilitybox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.aboutTab = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.helpbtn = new System.Windows.Forms.Button();
             this.openSaveFolderbtn = new System.Windows.Forms.Button();
             this.newprofilebtn = new System.Windows.Forms.Button();
             this.saveprofilebtn = new System.Windows.Forms.Button();
-            this.aboutTab = new System.Windows.Forms.TabPage();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.familiarforgebtn = new System.Windows.Forms.CheckBox();
+            this.masterlibrarionchck = new System.Windows.Forms.CheckBox();
             this.saveInfoTab.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.saveProgressTab.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.newGamePlusTab.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.aboutTab.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // saveInfoTab
@@ -338,21 +344,11 @@
             // 
             // newGamePlusTab
             // 
-            this.newGamePlusTab.Controls.Add(this.keepGoldenEggsCheck);
-            this.newGamePlusTab.Controls.Add(this.adventureProgressKeepCheck);
-            this.newGamePlusTab.Controls.Add(this.darkanaUnlockCheck);
-            this.newGamePlusTab.Controls.Add(this.randomLevelUpCheckBox);
-            this.newGamePlusTab.Controls.Add(this.adventureUnlockCheckbox);
+            this.newGamePlusTab.Controls.Add(this.groupBox3);
             this.newGamePlusTab.Controls.Add(this.newGamePlusCharacterComboBox4);
             this.newGamePlusTab.Controls.Add(this.newGamePlusCharacterComboBox3);
             this.newGamePlusTab.Controls.Add(this.newGamePlusCharacterComboBox2);
             this.newGamePlusTab.Controls.Add(this.ngplusnotificationtext);
-            this.newGamePlusTab.Controls.Add(this.rouletteActiveCheckBox);
-            this.newGamePlusTab.Controls.Add(this.removeProgressionArtsCheck);
-            this.newGamePlusTab.Controls.Add(this.noArtifactsCheck);
-            this.newGamePlusTab.Controls.Add(this.arcanaUnlockCheck);
-            this.newGamePlusTab.Controls.Add(this.buyStartersCheck);
-            this.newGamePlusTab.Controls.Add(this.unlockGameKillerCheck);
             this.newGamePlusTab.Controls.Add(this.startNewGamePlusbtn);
             this.newGamePlusTab.Controls.Add(this.newGamePlusCharacterComboBox);
             this.newGamePlusTab.Controls.Add(this.label12);
@@ -368,7 +364,7 @@
             // keepGoldenEggsCheck
             // 
             this.keepGoldenEggsCheck.AutoSize = true;
-            this.keepGoldenEggsCheck.Location = new System.Drawing.Point(362, 109);
+            this.keepGoldenEggsCheck.Location = new System.Drawing.Point(3, 249);
             this.keepGoldenEggsCheck.Name = "keepGoldenEggsCheck";
             this.keepGoldenEggsCheck.Size = new System.Drawing.Size(121, 17);
             this.keepGoldenEggsCheck.TabIndex = 19;
@@ -380,7 +376,7 @@
             this.adventureProgressKeepCheck.AutoSize = true;
             this.adventureProgressKeepCheck.Checked = true;
             this.adventureProgressKeepCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.adventureProgressKeepCheck.Location = new System.Drawing.Point(362, 73);
+            this.adventureProgressKeepCheck.Location = new System.Drawing.Point(3, 190);
             this.adventureProgressKeepCheck.Name = "adventureProgressKeepCheck";
             this.adventureProgressKeepCheck.Size = new System.Drawing.Size(103, 30);
             this.adventureProgressKeepCheck.TabIndex = 18;
@@ -390,7 +386,7 @@
             // darkanaUnlockCheck
             // 
             this.darkanaUnlockCheck.AutoSize = true;
-            this.darkanaUnlockCheck.Location = new System.Drawing.Point(362, 53);
+            this.darkanaUnlockCheck.Location = new System.Drawing.Point(3, 131);
             this.darkanaUnlockCheck.Name = "darkanaUnlockCheck";
             this.darkanaUnlockCheck.Size = new System.Drawing.Size(127, 17);
             this.darkanaUnlockCheck.TabIndex = 17;
@@ -400,7 +396,7 @@
             // randomLevelUpCheckBox
             // 
             this.randomLevelUpCheckBox.AutoSize = true;
-            this.randomLevelUpCheckBox.Location = new System.Drawing.Point(230, 127);
+            this.randomLevelUpCheckBox.Location = new System.Drawing.Point(3, 272);
             this.randomLevelUpCheckBox.Name = "randomLevelUpCheckBox";
             this.randomLevelUpCheckBox.Size = new System.Drawing.Size(112, 30);
             this.randomLevelUpCheckBox.TabIndex = 16;
@@ -410,7 +406,7 @@
             // adventureUnlockCheckbox
             // 
             this.adventureUnlockCheckbox.AutoSize = true;
-            this.adventureUnlockCheckbox.Location = new System.Drawing.Point(230, 109);
+            this.adventureUnlockCheckbox.Location = new System.Drawing.Point(3, 226);
             this.adventureUnlockCheckbox.Name = "adventureUnlockCheckbox";
             this.adventureUnlockCheckbox.Size = new System.Drawing.Size(135, 17);
             this.adventureUnlockCheckbox.TabIndex = 15;
@@ -454,14 +450,14 @@
             this.ngplusnotificationtext.Name = "ngplusnotificationtext";
             this.ngplusnotificationtext.ReadOnly = true;
             this.ngplusnotificationtext.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.ngplusnotificationtext.Size = new System.Drawing.Size(491, 148);
+            this.ngplusnotificationtext.Size = new System.Drawing.Size(220, 148);
             this.ngplusnotificationtext.TabIndex = 11;
             this.ngplusnotificationtext.Text = "";
             // 
             // rouletteActiveCheckBox
             // 
             this.rouletteActiveCheckBox.AutoSize = true;
-            this.rouletteActiveCheckBox.Location = new System.Drawing.Point(230, 77);
+            this.rouletteActiveCheckBox.Location = new System.Drawing.Point(3, 154);
             this.rouletteActiveCheckBox.Name = "rouletteActiveCheckBox";
             this.rouletteActiveCheckBox.Size = new System.Drawing.Size(102, 30);
             this.rouletteActiveCheckBox.TabIndex = 10;
@@ -471,7 +467,7 @@
             // removeProgressionArtsCheck
             // 
             this.removeProgressionArtsCheck.AutoSize = true;
-            this.removeProgressionArtsCheck.Location = new System.Drawing.Point(230, 50);
+            this.removeProgressionArtsCheck.Location = new System.Drawing.Point(3, 95);
             this.removeProgressionArtsCheck.Name = "removeProgressionArtsCheck";
             this.removeProgressionArtsCheck.Size = new System.Drawing.Size(124, 30);
             this.removeProgressionArtsCheck.TabIndex = 9;
@@ -481,7 +477,7 @@
             // noArtifactsCheck
             // 
             this.noArtifactsCheck.AutoSize = true;
-            this.noArtifactsCheck.Location = new System.Drawing.Point(362, 30);
+            this.noArtifactsCheck.Location = new System.Drawing.Point(3, 72);
             this.noArtifactsCheck.Name = "noArtifactsCheck";
             this.noArtifactsCheck.Size = new System.Drawing.Size(120, 17);
             this.noArtifactsCheck.TabIndex = 8;
@@ -491,7 +487,7 @@
             // arcanaUnlockCheck
             // 
             this.arcanaUnlockCheck.AutoSize = true;
-            this.arcanaUnlockCheck.Location = new System.Drawing.Point(230, 30);
+            this.arcanaUnlockCheck.Location = new System.Drawing.Point(3, 49);
             this.arcanaUnlockCheck.Name = "arcanaUnlockCheck";
             this.arcanaUnlockCheck.Size = new System.Drawing.Size(120, 17);
             this.arcanaUnlockCheck.TabIndex = 7;
@@ -501,7 +497,7 @@
             // buyStartersCheck
             // 
             this.buyStartersCheck.AutoSize = true;
-            this.buyStartersCheck.Location = new System.Drawing.Point(362, 3);
+            this.buyStartersCheck.Location = new System.Drawing.Point(3, 26);
             this.buyStartersCheck.Name = "buyStartersCheck";
             this.buyStartersCheck.Size = new System.Drawing.Size(127, 17);
             this.buyStartersCheck.TabIndex = 6;
@@ -512,7 +508,7 @@
             // unlockGameKillerCheck
             // 
             this.unlockGameKillerCheck.AutoSize = true;
-            this.unlockGameKillerCheck.Location = new System.Drawing.Point(230, 3);
+            this.unlockGameKillerCheck.Location = new System.Drawing.Point(3, 3);
             this.unlockGameKillerCheck.Name = "unlockGameKillerCheck";
             this.unlockGameKillerCheck.Size = new System.Drawing.Size(134, 17);
             this.unlockGameKillerCheck.TabIndex = 5;
@@ -565,6 +561,59 @@
             this.label11.Size = new System.Drawing.Size(142, 13);
             this.label11.TabIndex = 0;
             this.label11.Text = "Elligible for New Game Plus?";
+            // 
+            // aboutTab
+            // 
+            this.aboutTab.Controls.Add(this.richTextBox1);
+            this.aboutTab.Controls.Add(this.label15);
+            this.aboutTab.Controls.Add(this.label14);
+            this.aboutTab.Controls.Add(this.label13);
+            this.aboutTab.Location = new System.Drawing.Point(4, 22);
+            this.aboutTab.Name = "aboutTab";
+            this.aboutTab.Size = new System.Drawing.Size(504, 363);
+            this.aboutTab.TabIndex = 3;
+            this.aboutTab.Text = "About";
+            this.aboutTab.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Location = new System.Drawing.Point(3, 167);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(498, 193);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = "Takacomic (Made the checksum script work)\nYou (For being awesome :3)";
+            // 
+            // label15
+            // 
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(127, 119);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(252, 33);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Special Thanks To";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label14
+            // 
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(5, 79);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(236, 30);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Developed By: Nakano15";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(3, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(488, 60);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Vampire Survivors\r\nSaves Manager";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // groupBox1
             // 
@@ -619,58 +668,61 @@
             this.saveprofilebtn.UseVisualStyleBackColor = true;
             this.saveprofilebtn.Click += new System.EventHandler(this.saveprofilebtn_Click);
             // 
-            // aboutTab
+            // groupBox3
             // 
-            this.aboutTab.Controls.Add(this.richTextBox1);
-            this.aboutTab.Controls.Add(this.label15);
-            this.aboutTab.Controls.Add(this.label14);
-            this.aboutTab.Controls.Add(this.label13);
-            this.aboutTab.Location = new System.Drawing.Point(4, 22);
-            this.aboutTab.Name = "aboutTab";
-            this.aboutTab.Size = new System.Drawing.Size(504, 363);
-            this.aboutTab.TabIndex = 3;
-            this.aboutTab.Text = "About";
-            this.aboutTab.UseVisualStyleBackColor = true;
+            this.groupBox3.Controls.Add(this.flowLayoutPanel1);
+            this.groupBox3.Location = new System.Drawing.Point(232, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(265, 357);
+            this.groupBox3.TabIndex = 20;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "New Game Plus Options";
             // 
-            // label13
+            // flowLayoutPanel1
             // 
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(3, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(488, 60);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Vampire Survivors\r\nSaves Manager";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Controls.Add(this.unlockGameKillerCheck);
+            this.flowLayoutPanel1.Controls.Add(this.buyStartersCheck);
+            this.flowLayoutPanel1.Controls.Add(this.arcanaUnlockCheck);
+            this.flowLayoutPanel1.Controls.Add(this.noArtifactsCheck);
+            this.flowLayoutPanel1.Controls.Add(this.removeProgressionArtsCheck);
+            this.flowLayoutPanel1.Controls.Add(this.darkanaUnlockCheck);
+            this.flowLayoutPanel1.Controls.Add(this.rouletteActiveCheckBox);
+            this.flowLayoutPanel1.Controls.Add(this.adventureProgressKeepCheck);
+            this.flowLayoutPanel1.Controls.Add(this.adventureUnlockCheckbox);
+            this.flowLayoutPanel1.Controls.Add(this.keepGoldenEggsCheck);
+            this.flowLayoutPanel1.Controls.Add(this.randomLevelUpCheckBox);
+            this.flowLayoutPanel1.Controls.Add(this.familiarforgebtn);
+            this.flowLayoutPanel1.Controls.Add(this.masterlibrarionchck);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 19);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(253, 332);
+            this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanel1.WrapContents = false;
             // 
-            // label14
+            // familiarforgebtn
             // 
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(5, 79);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(236, 30);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "Developed By: Nakano15";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.familiarforgebtn.AutoSize = true;
+            this.familiarforgebtn.Location = new System.Drawing.Point(3, 308);
+            this.familiarforgebtn.Name = "familiarforgebtn";
+            this.familiarforgebtn.Size = new System.Drawing.Size(146, 17);
+            this.familiarforgebtn.TabIndex = 20;
+            this.familiarforgebtn.Text = "Familiar Forge Unlocked?";
+            this.familiarforgebtn.UseVisualStyleBackColor = true;
             // 
-            // label15
+            // masterlibrarionchck
             // 
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(127, 119);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(252, 33);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "Special Thanks To";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(3, 167);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(498, 193);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "Takacomic (Made the checksum script work)\nYou (For being awesome :3)";
+            this.masterlibrarionchck.AutoSize = true;
+            this.masterlibrarionchck.Location = new System.Drawing.Point(3, 331);
+            this.masterlibrarionchck.Name = "masterlibrarionchck";
+            this.masterlibrarionchck.Size = new System.Drawing.Size(193, 17);
+            this.masterlibrarionchck.TabIndex = 21;
+            this.masterlibrarionchck.Text = "Master Librarian Vendor Unlocked?";
+            this.masterlibrarionchck.UseVisualStyleBackColor = true;
             // 
             // SavesManager
             // 
@@ -690,8 +742,11 @@
             this.tabControl1.ResumeLayout(false);
             this.newGamePlusTab.ResumeLayout(false);
             this.newGamePlusTab.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
             this.aboutTab.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -753,6 +808,10 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.CheckBox familiarforgebtn;
+        private System.Windows.Forms.CheckBox masterlibrarionchck;
     }
 }
 

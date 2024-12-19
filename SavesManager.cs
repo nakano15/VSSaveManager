@@ -146,7 +146,7 @@ namespace VSSaveManager
             AddCharacterName("TP_JUSTE", "Juste Belmont");
             AddCharacterName("TP_RICHTER", "Richter Belmont");
             AddCharacterName("TP_JULIUS", "Julius Belmont");
-            AddCharacterName("TP_GRANT", "Grant Belmont");
+            AddCharacterName("TP_GRANT", "Grant Danasty");
             AddCharacterName("TP_JOHN", "John Morris");
             AddCharacterName("TP_JONATHAN", "Jonathan Morris");
             AddCharacterName("TP_SOMA", "Soma Cruz");
@@ -420,14 +420,40 @@ namespace VSSaveManager
             newGamePlusCharacterComboBox3.Enabled = false;
             newGamePlusCharacterComboBox4.Enabled = false;
             startNewGamePlusbtn.Enabled = NgPlusAble;
-            bool HasTrisection = false, HasAtlas = false, HasRandomLevelUp = false, HasArcana = false, HasDarkana = false;
-            foreach(string relic in CurrentSaveFile.SaveObject["CollectedItems"].Values<string>().ToArray())
+            bool HasTrisection = false, HasAtlas = false, HasRandomLevelUp = false, HasArcana = false, HasDarkana = false, HasFamiliarForge = false,
+                HasPartita = false;
+            foreach (string wpn in CurrentSaveFile.SaveObject["CollectedWeapons"].Values<string>().ToArray())
             {
-                if (relic == "RELIC_TRISECTION") HasTrisection = true;
-                if (relic == "RELIC_ATLAS") HasAtlas = true;
-                if (relic == "RELIC_BRAVESTORY") HasRandomLevelUp = true;
-                if (relic == "RELIC_RANDOMAZZO") HasArcana = true;
-                if (relic == "RELIC_DARKASSO") HasDarkana = true;
+                switch (wpn)
+                {
+                    case "TP_FAMILIARFORGE":
+                        HasFamiliarForge = true;
+                        break;
+                }
+            }
+            foreach (string relic in CurrentSaveFile.SaveObject["CollectedItems"].Values<string>().ToArray())
+            {
+                switch (relic)
+                {
+                    case "RELIC_TRISECTION":
+                        HasTrisection = true;
+                        break;
+                    case "RELIC_ATLAS":
+                        HasAtlas = true;
+                        break;
+                    case "RELIC_BRAVESTORY":
+                        HasRandomLevelUp = true;
+                        break;
+                    case "RELIC_RANDOMAZZO":
+                        HasArcana = true;
+                        break;
+                    case "RELIC_DARKASSO":
+                        HasDarkana = true;
+                        break;
+                    case "TP_RELIC_LIBRARIAN":
+                        HasPartita = true;
+                        break;
+                }
             }
             rouletteActiveCheckBox.Enabled = HasTrisection;
             rouletteActiveCheckBox.Checked = HasTrisection && CurrentSaveFile.SaveObject["SelectedRandomEvents"].Value<bool>();
@@ -436,13 +462,15 @@ namespace VSSaveManager
             randomLevelUpCheckBox.Checked = HasRandomLevelUp && CurrentSaveFile.SaveObject["SelectedRandomLevels"].Value<bool>();
             arcanaUnlockCheck.Enabled = arcanaUnlockCheck.Checked = HasArcana;
             darkanaUnlockCheck.Enabled = darkanaUnlockCheck.Checked = HasDarkana;
+            familiarforgebtn.Enabled = familiarforgebtn.Checked = HasFamiliarForge;
+            masterlibrarionchck.Enabled = masterlibrarionchck.Checked = HasPartita;
         }
 
         private void StartNewGamePlus()
         {
             JObject Save = CurrentSaveFile.SaveObject;
             List<string> HandyArray = new List<string>();
-            string NgPlusCharacter = newGamePlusCharacterComboBox.SelectedIndex <= 0 ? "" : Save["BoughtCharacters"].Values<string>().ToArray()[newGamePlusCharacterComboBox.SelectedIndex - 1];
+            string NgPlusCharacter = newGamePlusCharacterComboBox.SelectedIndex <= 0 ? "" : Save["BoughtCharacters"].Values<string>().ToArray()[NgPlusCharactersIndex[newGamePlusCharacterComboBox.SelectedIndex - 1]];
             Save["SelectedCharacter"] = NgPlusCharacter != "" ? NgPlusCharacter : "ANTONIO";
             Save["SelectedStage"] = "FOREST";
             Save["SelectedHyper"] = false;
@@ -516,21 +544,6 @@ namespace VSSaveManager
                 }
                 Save["BoughtCharacters"] = JArray.FromObject(Characters.ToArray());
                 Save["UnlockedCharacters"] = JArray.FromObject(Characters.ToArray());
-                /*if (BuyBackCharacters)
-                {
-                    Save["UnlockedCharacters"] = JArray.FromObject(new string[]
-                        {
-                        "IMELDA",
-                        "PASQUALINA",
-                        "GENNARO"
-                        });
-                }
-                else
-                {
-                    Save["UnlockedCharacters"] = JArray.FromObject(new string[]
-                        {
-                        });
-                }*/
                 Characters.Clear();
             }
             Save["BoughtPowerups"] = JArray.FromObject(new string[]
@@ -539,7 +552,8 @@ namespace VSSaveManager
             Save["DisabledPowerups"] = JArray.FromObject(new string[]
                 {
                 });
-            Save["CollectedWeapons"] = JArray.FromObject(new string[]
+            List<string> UnlockedWeapons = new List<string>(), CollectedWeapons = new List<string>();
+            CollectedWeapons.AddRange(new string[]
                 {
                     "WHIP",
                     "HOLYBOOK",
@@ -552,9 +566,7 @@ namespace VSSaveManager
                     "ARMOR",
                     "JUBILEE"
                 });
-            Save["UnlockedWeapons"] = JArray.FromObject(new string[]
-                {
-                });
+            UnlockedWeapons.Add("JUBILEE");
             Save["SelectedSkins"] = JObject.Parse("{}");
             Save["UnlockedSkins"] = JObject.Parse("{}");
             Save["UnlockedSkinsV2"] = JObject.Parse("{}");
@@ -592,6 +604,13 @@ namespace VSSaveManager
                     HandyArray.Add("RELIC_ATLAS");
                 if (randomLevelUpCheckBox.Checked)
                     HandyArray.Add("RELIC_BRAVESTORY");
+                if (masterlibrarionchck.Checked)
+                    HandyArray.Add("TP_RELIC_LIBRARIAN");
+                if (familiarforgebtn.Checked)
+                {
+                    UnlockedWeapons.Add("TP_FAMILIARFORGE");
+                    CollectedWeapons.Add("TP_FAMILIARFORGE");
+                }
                 Save["CollectedItems"] = JArray.FromObject(HandyArray.ToArray());
                 HandyArray.Clear();
             }
@@ -644,6 +663,8 @@ namespace VSSaveManager
             Save["HasSeenAdventureReveal"] = false;
             Save["HasPlayedStage3"] = false;
             Save["HasSeenDarkanaTransition"] = false;
+            Save["CollectedWeapons"] = JArray.FromObject(CollectedWeapons.ToArray());
+            Save["UnlockedWeapons"] = JArray.FromObject(UnlockedWeapons.ToArray());
             if (!adventureProgressKeepCheck.Checked)
             {
                 Save["AdventureProgress"] = JArray.FromObject(new string[] { });

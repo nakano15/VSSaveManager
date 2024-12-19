@@ -1,1 +1,2 @@
-﻿
+﻿* Added support to Ode to Castlevania dlc characters.
+* Added new New Game Plus unlockables.
